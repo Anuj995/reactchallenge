@@ -233,6 +233,14 @@ Each challenge is scored by:
 
 **Pass = 80% or higher.** Only what’s listed in each challenge’s README (Technical Requirements) is checked; there are no hidden requirements.
 
+
+
+Note:  
+1) Use npm version lesser than 12 
+example 10 or 11
+
+2) Use Chrome or Brave 
+
 ---
 
 ## More info
