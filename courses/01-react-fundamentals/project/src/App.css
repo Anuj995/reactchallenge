@@ -15,11 +15,12 @@
 #task-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 16px;
+  padding: 20px;
 }
 
 #task-card {
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
 }
