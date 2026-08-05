@@ -6,7 +6,7 @@
 
 Make the list dynamic: state with at least 5 tasks, render with `map()`, unique `key`, and a task count (e.g. "5 Tasks").
 
-**In practice.** `useState` is the default way to hold UI state in React. You use it when the component (or a parent) "owns" the data and needs to update the UI when that data changes. In production, keeping state close to where it's used and passing it down via props keeps components predictable and testable.
+**In practice.** `useState` is the default way to hold UI state in React. You use it when the component (or a parent) "owns" the data and needs to update the UI when that data changes. In aproduction, keeping state close to where it's used and passing it down via props keeps components predictable and testable.
 
 ## What to do
 
