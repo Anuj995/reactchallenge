@@ -1,1 +1,469 @@
-[]
+[
+  {
+    "challengeId": "01-static-task-display",
+    "challengeName": "Static Task Display",
+    "timestamp": "2026-08-05T11:53:24.123Z",
+    "scores": {
+      "functionalTests": 100,
+      "codeQuality": 90,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 88
+    },
+    "totalScore": 96.7,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 6,
+      "passedTests": 6,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 01: Static Task Display",
+                "TaskCard"
+              ],
+              "fullName": " Challenge 01: Static Task Display TaskCard should render title, description, and priority",
+              "status": "passed",
+              "title": "should render title, description, and priority",
+              "duration": 22,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 01: Static Task Display",
+                "TaskCard"
+              ],
+              "fullName": " Challenge 01: Static Task Display TaskCard should use article with id task-card",
+              "status": "passed",
+              "title": "should use article with id task-card",
+              "duration": 2,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 01: Static Task Display",
+                "TaskCard"
+              ],
+              "fullName": " Challenge 01: Static Task Display TaskCard should use semantic HTML (h2 for title)",
+              "status": "passed",
+              "title": "should use semantic HTML (h2 for title)",
+              "duration": 2,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 01: Static Task Display",
+                "TaskList"
+              ],
+              "fullName": " Challenge 01: Static Task Display TaskList should render 3 TaskCards when no tasks prop",
+              "status": "passed",
+              "title": "should render 3 TaskCards when no tasks prop",
+              "duration": 2,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 01: Static Task Display",
+                "TaskList"
+              ],
+              "fullName": " Challenge 01: Static Task Display TaskList should have section with id task-list",
+              "status": "passed",
+              "title": "should have section with id task-list",
+              "duration": 3,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 01: Static Task Display",
+                "TaskList"
+              ],
+              "fullName": " Challenge 01: Static Task Display TaskList should display three different tasks",
+              "status": "passed",
+              "title": "should display three different tasks",
+              "duration": 7,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1785930806546,
+          "endTime": 1785930806584,
+          "status": "passed",
+          "message": "",
+          "name": "C:/Users/anujk/OneDrive/Desktop/Challenges/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-01.test.tsx"
+        }
+      ]
+    },
+    "lintResults": {
+      "score": 90,
+      "passed": false,
+      "totalIssues": 1,
+      "errors": 1,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\App.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\components\\TaskCard.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\components\\TaskList.tsx",
+          "messages": [
+            {
+              "ruleId": "@typescript-eslint/no-unused-vars",
+              "severity": 2,
+              "message": "'_props' is defined but never used.",
+              "line": 22,
+              "column": 34,
+              "nodeType": "Identifier",
+              "messageId": "unusedVar",
+              "endLine": 22,
+              "endColumn": 55
+            }
+          ],
+          "suppressedMessages": [],
+          "errorCount": 1,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "source": "import TaskCard from \"./TaskCard\";\r\n\r\nexport interface Task {\r\n  id: string | number\r\n  title: string\r\n  description: string\r\n  priority: string\r\n  completed: boolean\r\n  category?: string\r\n  tags?: string[]\r\n  dueDate?: string | number\r\n}\r\n\r\ninterface TaskListProps {\r\n  tasks?: Task[]\r\n  countText?: string\r\n  onToggle?: (id: string | number) => void\r\n  onDelete?: (id: string | number) => void\r\n  linkToTaskDetail?: boolean\r\n}\r\n\r\nexport default function TaskList(_props: TaskListProps) {\r\n  return (\r\n    <section id=\"task-list\">\r\n      <TaskCard\r\n        title=\"Task One\"\r\n        description=\"First hardcoded task\"\r\n        priority=\"High\"\r\n      />\r\n\r\n      <TaskCard\r\n        title=\"Task Two\"\r\n        description=\"Second hardcoded task\"\r\n        priority=\"Medium\"\r\n      />\r\n\r\n      <TaskCard\r\n        title=\"Task Three\"\r\n        description=\"Third hardcoded task\"\r\n        priority=\"Low\"\r\n      />\r\n    </section>\r\n  )\r\n}",
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "functionalComponent",
+        "props"
+      ],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/components/TaskCard.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "props"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/components/TaskList.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "props"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/App.tsx",
+          "patternsFound": [
+            "functionalComponent"
+          ],
+          "patternsMissing": [
+            "props"
+          ]
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 5,
+      "passedTests": 5,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-01.spec.ts",
+          "file": "challenge-01.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 01: Static Task Display - E2E",
+              "file": "challenge-01.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should display task list on the page",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 224,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-08-05T11:53:34.086Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "77d07a436f655ce05c79-46da488bdf18f28a4e06",
+                  "file": "challenge-01.spec.ts",
+                  "line": 8,
+                  "column": 3
+                },
+                {
+                  "title": "should display 3 tasks",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 179,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-08-05T11:53:34.415Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "77d07a436f655ce05c79-75e1df148f226548dd88",
+                  "file": "challenge-01.spec.ts",
+                  "line": 13,
+                  "column": 3
+                },
+                {
+                  "title": "should display task titles",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 181,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-08-05T11:53:34.606Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "77d07a436f655ce05c79-bdfd9e68ed1d14ec988e",
+                  "file": "challenge-01.spec.ts",
+                  "line": 18,
+                  "column": 3
+                },
+                {
+                  "title": "should display task descriptions and priority",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 187,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-08-05T11:53:34.798Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "77d07a436f655ce05c79-d537fa52bda8f84d27a7",
+                  "file": "challenge-01.spec.ts",
+                  "line": 24,
+                  "column": 3
+                },
+                {
+                  "title": "should have proper layout",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 188,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-08-05T11:53:34.995Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "77d07a436f655ce05c79-877d341f9e2e19f38eaf",
+                  "file": "challenge-01.spec.ts",
+                  "line": 29,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "01-static-task-display",
+      "timestamp": "2026-08-05T11:53:35.574Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and follows a consistent naming convention.",
+        "The use of TypeScript interfaces for defining component props and task data is a good practice.",
+        "The code is relatively free of errors and warnings."
+      ],
+      "improvements": [
+        "Some of the component props are not being used, such as `taskId` and `onToggle` in `TaskCard`. Consider removing unused props to declutter the code.",
+        "The `TaskList` component is using hardcoded tasks. Consider moving this data to a separate file or a data store to make it easier to manage and update.",
+        "The `TaskCard` component is not handling the case where the `priority` prop is not one of the expected values (`Low`, `Medium`, or `High`). Consider adding a check to handle this case and provide a default value or an error message."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured and follows good practices, but there are some areas for improvement to make it more maintainable and efficient. With a few tweaks, the code can be even more robust and scalable."
+    },
+    "aiResults": {
+      "challengeId": "01-static-task-display",
+      "timestamp": "2026-08-05T11:53:35.574Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and follows a consistent naming convention.",
+        "The use of TypeScript interfaces for defining component props and task data is a good practice.",
+        "The code is relatively free of errors and warnings."
+      ],
+      "improvements": [
+        "Some of the component props are not being used, such as `taskId` and `onToggle` in `TaskCard`. Consider removing unused props to declutter the code.",
+        "The `TaskList` component is using hardcoded tasks. Consider moving this data to a separate file or a data store to make it easier to manage and update.",
+        "The `TaskCard` component is not handling the case where the `priority` prop is not one of the expected values (`Low`, `Medium`, or `High`). Consider adding a check to handle this case and provide a default value or an error message."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured and follows good practices, but there are some areas for improvement to make it more maintainable and efficient. With a few tweaks, the code can be even more robust and scalable."
+    }
+  }
+]
