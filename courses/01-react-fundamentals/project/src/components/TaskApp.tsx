@@ -1,4 +1,5 @@
 import type { Dispatch, SetStateAction } from "react"
+import TaskForm from "./TaskForm"
 import TaskList, { type Task } from "./TaskList"
 
 interface TaskAppProps {
@@ -15,11 +16,40 @@ interface TaskAppProps {
 
 export default function TaskApp({
   tasks = [],
+  setTasks,
 }: TaskAppProps) {
+
+  function handleAddTask(task: Record<string, unknown>) {
+    if (setTasks) {
+      setTasks((prev) => [...prev, task as Task])
+    }
+  }
+
+  function handleToggle(id: string | number) {
+    if (setTasks) {
+      setTasks((prev) =>
+        prev.map((task) =>
+          task.id === id
+            ? { ...task, completed: !task.completed }
+            : task
+        )
+      )
+    }
+  }
+
+  const completedCount = tasks.filter(
+    (task) => task.completed
+  ).length
+
   return (
-    <TaskList
-      tasks={tasks}
-      countText={`${tasks.length} Tasks`}
-    />
+    <>
+      <TaskForm onAddTask={handleAddTask} />
+
+      <TaskList
+        tasks={tasks}
+        onToggle={handleToggle}
+        countText={`${completedCount} of ${tasks.length} completed`}
+      />
+    </>
   )
 }

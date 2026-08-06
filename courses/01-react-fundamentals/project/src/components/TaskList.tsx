@@ -1,4 +1,4 @@
-import TaskCard from "./TaskCard";
+import TaskCard from "./TaskCard"
 
 export interface Task {
   id: string | number
@@ -43,11 +43,10 @@ const HARDCODED_TASKS: Task[] = [
   },
 ]
 
-
-
 export default function TaskList({
   tasks,
   countText,
+  onToggle,
 }: TaskListProps) {
   const list: Task[] = tasks ?? HARDCODED_TASKS
 
@@ -63,6 +62,7 @@ export default function TaskList({
             description={task.description}
             priority={task.priority}
             completed={task.completed}
+            onToggle={onToggle}
             taskId={task.id}
           />
         ))}
