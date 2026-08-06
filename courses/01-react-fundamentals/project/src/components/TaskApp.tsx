@@ -37,6 +37,14 @@ export default function TaskApp({
     }
   }
 
+  function handleDelete(id: string | number) {
+    if (setTasks) {
+      setTasks((prev) =>
+        prev.filter((task) => task.id !== id)
+      )
+    }
+  }
+
   const completedCount = tasks.filter(
     (task) => task.completed
   ).length
@@ -48,6 +56,7 @@ export default function TaskApp({
       <TaskList
         tasks={tasks}
         onToggle={handleToggle}
+        onDelete={handleDelete}
         countText={`${completedCount} of ${tasks.length} completed`}
       />
     </>

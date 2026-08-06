@@ -47,6 +47,7 @@ export default function TaskList({
   tasks,
   countText,
   onToggle,
+  onDelete,
 }: TaskListProps) {
   const list: Task[] = tasks ?? HARDCODED_TASKS
 
@@ -56,15 +57,16 @@ export default function TaskList({
 
       <section id="task-list">
         {list.map((task) => (
-          <TaskCard
-            key={task.id}
-            title={task.title}
-            description={task.description}
-            priority={task.priority}
-            completed={task.completed}
-            onToggle={onToggle}
-            taskId={task.id}
-          />
+         <TaskCard
+  key={task.id}
+  title={task.title}
+  description={task.description}
+  priority={task.priority}
+  completed={task.completed}
+  onToggle={onToggle}
+  onDelete={onDelete}
+  taskId={task.id}
+/>
         ))}
       </section>
     </>
