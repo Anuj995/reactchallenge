@@ -1,3 +1,4 @@
+import type { Dispatch, SetStateAction } from "react"
 import TaskCard from "./TaskCard"
 
 export interface Task {
@@ -16,6 +17,15 @@ interface TaskListProps {
   countText?: string
   onToggle?: (id: string | number) => void
   onDelete?: (id: string | number) => void
+
+  editingId?: string | number | null
+  setEditingId?: Dispatch<SetStateAction<string | number | null>>
+
+  onUpdateTask?: (
+    id: string | number,
+    updates: Partial<Task>
+  ) => void
+
   linkToTaskDetail?: boolean
 }
 
@@ -48,6 +58,9 @@ export default function TaskList({
   countText,
   onToggle,
   onDelete,
+  editingId,
+  setEditingId,
+  onUpdateTask,
 }: TaskListProps) {
   const list: Task[] = tasks ?? HARDCODED_TASKS
 
@@ -57,16 +70,19 @@ export default function TaskList({
 
       <section id="task-list">
         {list.map((task) => (
-         <TaskCard
-  key={task.id}
-  title={task.title}
-  description={task.description}
-  priority={task.priority}
-  completed={task.completed}
-  onToggle={onToggle}
-  onDelete={onDelete}
-  taskId={task.id}
-/>
+          <TaskCard
+            key={task.id}
+            title={task.title}
+            description={task.description}
+            priority={task.priority}
+            completed={task.completed}
+            onToggle={onToggle}
+            onDelete={onDelete}
+            taskId={task.id}
+            editing={editingId === task.id}
+            setEditingId={setEditingId}
+            onUpdateTask={onUpdateTask}
+          />
         ))}
       </section>
     </>

@@ -25,6 +25,8 @@ export default function TaskApp({
     "recent" | "high" | "low" | "alphabetical"
   >("recent")
 
+  const [editingId, setEditingId] = useState<string | number | null>(null)
+
   function handleAddTask(task: Record<string, unknown>) {
     if (setTasks) {
       setTasks((prev) => [...prev, task as Task])
@@ -51,6 +53,23 @@ export default function TaskApp({
     }
   }
 
+  function handleUpdateTask(
+    id: string | number,
+    updates: Partial<Task>
+  ) {
+    if (setTasks) {
+      setTasks((prev) =>
+        prev.map((task) =>
+          task.id === id
+            ? { ...task, ...updates }
+            : task
+        )
+      )
+    }
+
+    setEditingId(null)
+  }
+
   const filteredTasks =
     filter === "all"
       ? tasks
@@ -59,9 +78,7 @@ export default function TaskApp({
       : tasks.filter((task) => task.completed)
 
   const sortedTasks = [...filteredTasks].sort((a, b) => {
-    if (sort === "recent") {
-      return 0
-    }
+    if (sort === "recent") return 0
 
     if (sort === "alphabetical") {
       return a.title.localeCompare(b.title, undefined, {
@@ -112,6 +129,9 @@ export default function TaskApp({
           tasks={sortedTasks}
           onToggle={handleToggle}
           onDelete={handleDelete}
+          editingId={editingId}
+          setEditingId={setEditingId}
+          onUpdateTask={handleUpdateTask}
         />
       )}
     </>
