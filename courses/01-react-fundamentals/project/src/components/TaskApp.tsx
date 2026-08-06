@@ -21,6 +21,10 @@ export default function TaskApp({
 }: TaskAppProps) {
   const [filter, setFilter] = useState<"all" | "active" | "completed">("all")
 
+  const [sort, setSort] = useState<
+    "recent" | "high" | "low" | "alphabetical"
+  >("recent")
+
   function handleAddTask(task: Record<string, unknown>) {
     if (setTasks) {
       setTasks((prev) => [...prev, task as Task])
@@ -54,6 +58,36 @@ export default function TaskApp({
       ? tasks.filter((task) => !task.completed)
       : tasks.filter((task) => task.completed)
 
+  const sortedTasks = [...filteredTasks].sort((a, b) => {
+    if (sort === "recent") {
+      return 0
+    }
+
+    if (sort === "alphabetical") {
+      return a.title.localeCompare(b.title, undefined, {
+        sensitivity: "base",
+      })
+    }
+
+    const priorityValue = {
+      High: 3,
+      Medium: 2,
+      Low: 1,
+    }
+
+    if (sort === "high") {
+      return (
+        priorityValue[b.priority as keyof typeof priorityValue] -
+        priorityValue[a.priority as keyof typeof priorityValue]
+      )
+    }
+
+    return (
+      priorityValue[a.priority as keyof typeof priorityValue] -
+      priorityValue[b.priority as keyof typeof priorityValue]
+    )
+  })
+
   return (
     <>
       <TaskForm onAddTask={handleAddTask} />
@@ -61,19 +95,21 @@ export default function TaskApp({
       <FilterBar
         filter={filter}
         onFilterChange={setFilter}
+        sort={sort}
+        onSortChange={setSort}
       />
 
       <p id="task-count">
-        Showing {filteredTasks.length} of {tasks.length} tasks
+        Showing {sortedTasks.length} of {tasks.length} tasks
       </p>
 
-      {filteredTasks.length === 0 ? (
+      {sortedTasks.length === 0 ? (
         <p id="filter-empty-message">
           No tasks match this filter
         </p>
       ) : (
         <TaskList
-          tasks={filteredTasks}
+          tasks={sortedTasks}
           onToggle={handleToggle}
           onDelete={handleDelete}
         />

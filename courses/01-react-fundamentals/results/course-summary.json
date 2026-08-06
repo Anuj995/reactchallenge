@@ -1,11 +1,11 @@
 {
   "courseId": "01-react-fundamentals",
   "courseName": "React Fundamentals",
-  "lastUpdated": "2026-08-06T12:21:59.712Z",
+  "lastUpdated": "2026-08-06T12:25:50.644Z",
   "totalChallenges": 23,
-  "completedChallenges": 6,
-  "averageScore": 96,
-  "completionPercentage": 26.1,
+  "completedChallenges": 7,
+  "averageScore": 96.2,
+  "completionPercentage": 30.4,
   "badgeLevel": "none",
   "challengeResults": [
     {
@@ -43,6 +43,12 @@
       "challengeName": "Task Filtering",
       "score": 98.2,
       "passed": true
+    },
+    {
+      "challengeId": "07-priority-based-sorting",
+      "challengeName": "Priority-Based Sorting",
+      "score": 97.45,
+      "passed": true
     }
   ],
   "skillStrengths": [
@@ -51,7 +57,8 @@
     "Adding New Tasks",
     "Task Completion Toggle",
     "Task Deletion",
-    "Task Filtering"
+    "Task Filtering",
+    "Priority-Based Sorting"
   ],
   "improvementAreas": []
 }
