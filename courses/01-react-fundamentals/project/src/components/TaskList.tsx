@@ -19,7 +19,9 @@ interface TaskListProps {
   onDelete?: (id: string | number) => void
 
   editingId?: string | number | null
-  setEditingId?: Dispatch<SetStateAction<string | number | null>>
+  setEditingId?: Dispatch<
+    SetStateAction<string | number | null>
+  >
 
   onUpdateTask?: (
     id: string | number,
@@ -36,6 +38,8 @@ const HARDCODED_TASKS: Task[] = [
     description: "First hardcoded task",
     priority: "High",
     completed: false,
+    category: "Work",
+    tags: ["urgent"],
   },
   {
     id: 2,
@@ -43,6 +47,8 @@ const HARDCODED_TASKS: Task[] = [
     description: "Second hardcoded task",
     priority: "Medium",
     completed: false,
+    category: "Personal",
+    tags: ["home"],
   },
   {
     id: 3,
@@ -50,6 +56,8 @@ const HARDCODED_TASKS: Task[] = [
     description: "Third hardcoded task",
     priority: "Low",
     completed: false,
+    category: "General",
+    tags: ["misc"],
   },
 ]
 
@@ -66,7 +74,11 @@ export default function TaskList({
 
   return (
     <>
-      {countText && <p id="task-count">{countText}</p>}
+      {countText && (
+        <p id="task-count">
+          {countText}
+        </p>
+      )}
 
       <section id="task-list">
         {list.map((task) => (
@@ -76,6 +88,8 @@ export default function TaskList({
             description={task.description}
             priority={task.priority}
             completed={task.completed}
+            category={task.category}
+            tags={task.tags}
             onToggle={onToggle}
             onDelete={onDelete}
             taskId={task.id}
