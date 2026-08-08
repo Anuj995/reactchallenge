@@ -19,13 +19,19 @@ export default function TaskApp({
   tasks = [],
   setTasks,
 }: TaskAppProps) {
-  const [filter, setFilter] = useState<"all" | "active" | "completed">("all")
+  const [filter, setFilter] = useState<
+    "all" | "active" | "completed"
+  >("all")
 
   const [sort, setSort] = useState<
     "recent" | "high" | "low" | "alphabetical"
   >("recent")
 
-  const [editingId, setEditingId] = useState<string | number | null>(null)
+  const [search, setSearch] = useState("")
+
+  const [editingId, setEditingId] = useState<
+    string | number | null
+  >(null)
 
   function handleAddTask(task: Record<string, unknown>) {
     if (setTasks) {
@@ -70,40 +76,66 @@ export default function TaskApp({
     setEditingId(null)
   }
 
-  const filteredTasks =
+  const statusFilteredTasks =
     filter === "all"
       ? tasks
       : filter === "active"
       ? tasks.filter((task) => !task.completed)
       : tasks.filter((task) => task.completed)
 
-  const sortedTasks = [...filteredTasks].sort((a, b) => {
-    if (sort === "recent") return 0
+  const searchFilteredTasks = statusFilteredTasks.filter(
+    (task) =>
+      task.title
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      task.description
+        .toLowerCase()
+        .includes(search.toLowerCase())
+  )
 
-    if (sort === "alphabetical") {
-      return a.title.localeCompare(b.title, undefined, {
-        sensitivity: "base",
-      })
-    }
+  const sortedTasks = [...searchFilteredTasks].sort(
+    (a, b) => {
+      if (sort === "recent") {
+        return 0
+      }
 
-    const priorityValue = {
-      High: 3,
-      Medium: 2,
-      Low: 1,
-    }
+      if (sort === "alphabetical") {
+        return a.title.localeCompare(
+          b.title,
+          undefined,
+          {
+            sensitivity: "base",
+          }
+        )
+      }
 
-    if (sort === "high") {
+      const priorityValue = {
+        High: 3,
+        Medium: 2,
+        Low: 1,
+      }
+
+      if (sort === "high") {
+        return (
+          priorityValue[
+            b.priority as keyof typeof priorityValue
+          ] -
+          priorityValue[
+            a.priority as keyof typeof priorityValue
+          ]
+        )
+      }
+
       return (
-        priorityValue[b.priority as keyof typeof priorityValue] -
-        priorityValue[a.priority as keyof typeof priorityValue]
+        priorityValue[
+          a.priority as keyof typeof priorityValue
+        ] -
+        priorityValue[
+          b.priority as keyof typeof priorityValue
+        ]
       )
     }
-
-    return (
-      priorityValue[a.priority as keyof typeof priorityValue] -
-      priorityValue[b.priority as keyof typeof priorityValue]
-    )
-  })
+  )
 
   return (
     <>
@@ -114,6 +146,8 @@ export default function TaskApp({
         onFilterChange={setFilter}
         sort={sort}
         onSortChange={setSort}
+        search={search}
+        onSearchChange={setSearch}
       />
 
       <p id="task-count">
@@ -122,7 +156,7 @@ export default function TaskApp({
 
       {sortedTasks.length === 0 ? (
         <p id="filter-empty-message">
-          No tasks match this filter
+          No tasks found
         </p>
       ) : (
         <TaskList
