@@ -36,6 +36,10 @@ export default function TaskApp({
   >("recent")
 
   const [search, setSearch] = useState("")
+  const [debouncedSearch, setDebouncedSearch] =
+    useState("")
+  const [isSearching, setIsSearching] =
+    useState(false)
 
   const [editingId, setEditingId] = useState<
     string | number | null
@@ -66,11 +70,25 @@ export default function TaskApp({
     )
   }, [tasks])
 
+  useEffect(() => {
+    setIsSearching(true)
+
+    const timeout = setTimeout(() => {
+      setDebouncedSearch(search)
+      setIsSearching(false)
+    }, 300)
+
+    return () => clearTimeout(timeout)
+  }, [search])
+
   function handleAddTask(
     task: Record<string, unknown>
   ) {
     if (setTasks) {
-      setTasks((prev) => [...prev, task as Task])
+      setTasks((prev) => [
+        ...prev,
+        task as Task,
+      ])
     }
   }
 
@@ -92,7 +110,9 @@ export default function TaskApp({
   function handleDelete(id: string | number) {
     if (setTasks) {
       setTasks((prev) =>
-        prev.filter((task) => task.id !== id)
+        prev.filter(
+          (task) => task.id !== id
+        )
       )
     }
   }
@@ -130,10 +150,14 @@ export default function TaskApp({
       (task) =>
         task.title
           .toLowerCase()
-          .includes(search.toLowerCase()) ||
+          .includes(
+            debouncedSearch.toLowerCase()
+          ) ||
         task.description
           .toLowerCase()
-          .includes(search.toLowerCase())
+          .includes(
+            debouncedSearch.toLowerCase()
+          )
     )
 
   const sortedTasks = [
@@ -192,6 +216,12 @@ export default function TaskApp({
         search={search}
         onSearchChange={setSearch}
       />
+
+      {isSearching && (
+        <p id="searching-indicator">
+          Searching...
+        </p>
+      )}
 
       <p id="task-count">
         Showing {sortedTasks.length} of{" "}
