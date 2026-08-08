@@ -1,4 +1,9 @@
-import { useState, type Dispatch, type SetStateAction } from "react"
+import {
+  useState,
+  useEffect,
+  type Dispatch,
+  type SetStateAction,
+} from "react"
 import TaskForm from "./TaskForm"
 import TaskList, { type Task } from "./TaskList"
 import FilterBar from "./FilterBar"
@@ -6,7 +11,10 @@ import FilterBar from "./FilterBar"
 interface TaskAppProps {
   tasks?: Task[]
   setTasks?: Dispatch<SetStateAction<Task[]>>
-  dispatch?: (action: { type: string; payload?: unknown }) => void
+  dispatch?: (action: {
+    type: string
+    payload?: unknown
+  }) => void
   showForm?: boolean
   countFormat?: string
   showFilterBar?: boolean
@@ -33,7 +41,34 @@ export default function TaskApp({
     string | number | null
   >(null)
 
-  function handleAddTask(task: Record<string, unknown>) {
+  useEffect(() => {
+    try {
+      const savedTasks = localStorage.getItem(
+        "task-app-tasks"
+      )
+
+      if (savedTasks && setTasks) {
+        const parsedTasks = JSON.parse(
+          savedTasks
+        ) as Task[]
+
+        setTasks(parsedTasks)
+      }
+    } catch {
+      // ignore invalid localStorage data
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(
+      "task-app-tasks",
+      JSON.stringify(tasks)
+    )
+  }, [tasks])
+
+  function handleAddTask(
+    task: Record<string, unknown>
+  ) {
     if (setTasks) {
       setTasks((prev) => [...prev, task as Task])
     }
@@ -44,7 +79,10 @@ export default function TaskApp({
       setTasks((prev) =>
         prev.map((task) =>
           task.id === id
-            ? { ...task, completed: !task.completed }
+            ? {
+                ...task,
+                completed: !task.completed,
+              }
             : task
         )
       )
@@ -80,62 +118,67 @@ export default function TaskApp({
     filter === "all"
       ? tasks
       : filter === "active"
-      ? tasks.filter((task) => !task.completed)
-      : tasks.filter((task) => task.completed)
-
-  const searchFilteredTasks = statusFilteredTasks.filter(
-    (task) =>
-      task.title
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-      task.description
-        .toLowerCase()
-        .includes(search.toLowerCase())
-  )
-
-  const sortedTasks = [...searchFilteredTasks].sort(
-    (a, b) => {
-      if (sort === "recent") {
-        return 0
-      }
-
-      if (sort === "alphabetical") {
-        return a.title.localeCompare(
-          b.title,
-          undefined,
-          {
-            sensitivity: "base",
-          }
+      ? tasks.filter(
+          (task) => !task.completed
         )
-      }
-
-      const priorityValue = {
-        High: 3,
-        Medium: 2,
-        Low: 1,
-      }
-
-      if (sort === "high") {
-        return (
-          priorityValue[
-            b.priority as keyof typeof priorityValue
-          ] -
-          priorityValue[
-            a.priority as keyof typeof priorityValue
-          ]
+      : tasks.filter(
+          (task) => task.completed
         )
-      }
 
+  const searchFilteredTasks =
+    statusFilteredTasks.filter(
+      (task) =>
+        task.title
+          .toLowerCase()
+          .includes(search.toLowerCase()) ||
+        task.description
+          .toLowerCase()
+          .includes(search.toLowerCase())
+    )
+
+  const sortedTasks = [
+    ...searchFilteredTasks,
+  ].sort((a, b) => {
+    if (sort === "recent") {
+      return 0
+    }
+
+    if (sort === "alphabetical") {
+      return a.title.localeCompare(
+        b.title,
+        undefined,
+        {
+          sensitivity: "base",
+        }
+      )
+    }
+
+    const priorityValue = {
+      High: 3,
+      Medium: 2,
+      Low: 1,
+    }
+
+    if (sort === "high") {
       return (
         priorityValue[
-          a.priority as keyof typeof priorityValue
+          b.priority as keyof typeof priorityValue
         ] -
         priorityValue[
-          b.priority as keyof typeof priorityValue
+          a.priority as keyof typeof priorityValue
         ]
       )
     }
-  )
+
+    return (
+      priorityValue[
+        a.priority as keyof typeof priorityValue
+      ] -
+      priorityValue[
+        b.priority as keyof typeof priorityValue
+      ]
+    )
+  })
 
   return (
     <>
@@ -151,7 +194,8 @@ export default function TaskApp({
       />
 
       <p id="task-count">
-        Showing {sortedTasks.length} of {tasks.length} tasks
+        Showing {sortedTasks.length} of{" "}
+        {tasks.length} tasks
       </p>
 
       {sortedTasks.length === 0 ? (
