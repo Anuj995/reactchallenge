@@ -1,12 +1,14 @@
 import {
   useState,
   useEffect,
+  useMemo,
   type Dispatch,
   type SetStateAction,
 } from "react"
 import TaskForm from "./TaskForm"
 import TaskList, { type Task } from "./TaskList"
 import FilterBar from "./FilterBar"
+import StatsPanel from "./StatsPanel"
 
 interface TaskAppProps {
   tasks?: Task[]
@@ -32,7 +34,11 @@ export default function TaskApp({
   >("all")
 
   const [sort, setSort] = useState<
-    "recent" | "high" | "low" | "alphabetical"
+    | "recent"
+    | "high"
+    | "low"
+    | "alphabetical"
+    | "dueDate"
   >("recent")
 
   const [search, setSearch] = useState("")
@@ -92,14 +98,17 @@ export default function TaskApp({
     }
   }
 
-  function handleToggle(id: string | number) {
+  function handleToggle(
+    id: string | number
+  ) {
     if (setTasks) {
       setTasks((prev) =>
         prev.map((task) =>
           task.id === id
             ? {
                 ...task,
-                completed: !task.completed,
+                completed:
+                  !task.completed,
               }
             : task
         )
@@ -107,7 +116,9 @@ export default function TaskApp({
     }
   }
 
-  function handleDelete(id: string | number) {
+  function handleDelete(
+    id: string | number
+  ) {
     if (setTasks) {
       setTasks((prev) =>
         prev.filter(
@@ -125,7 +136,10 @@ export default function TaskApp({
       setTasks((prev) =>
         prev.map((task) =>
           task.id === id
-            ? { ...task, ...updates }
+            ? {
+                ...task,
+                ...updates,
+              }
             : task
         )
       )
@@ -133,6 +147,47 @@ export default function TaskApp({
 
     setEditingId(null)
   }
+
+  const stats = useMemo(() => {
+    const total = tasks.length
+
+    const completed = tasks.filter(
+      (task) => task.completed
+    ).length
+
+    const active = total - completed
+
+    const overdue = tasks.filter(
+      (task) => {
+        if (
+          !task.dueDate ||
+          task.completed
+        ) {
+          return false
+        }
+
+        return (
+          new Date(task.dueDate) <
+          new Date()
+        )
+      }
+    ).length
+
+    const completedPercentage =
+      total === 0
+        ? 0
+        : Math.round(
+            (completed / total) * 100
+          )
+
+    return {
+      total,
+      completed,
+      active,
+      overdue,
+      completedPercentage,
+    }
+  }, [tasks])
 
   const statusFilteredTasks =
     filter === "all"
@@ -167,7 +222,35 @@ export default function TaskApp({
       return 0
     }
 
-    if (sort === "alphabetical") {
+    if (sort === "dueDate") {
+      if (
+        !a.dueDate &&
+        !b.dueDate
+      ) {
+        return 0
+      }
+
+      if (!a.dueDate) {
+        return 1
+      }
+
+      if (!b.dueDate) {
+        return -1
+      }
+
+      return (
+        new Date(
+          a.dueDate
+        ).getTime() -
+        new Date(
+          b.dueDate
+        ).getTime()
+      )
+    }
+
+    if (
+      sort === "alphabetical"
+    ) {
       return a.title.localeCompare(
         b.title,
         undefined,
@@ -206,7 +289,15 @@ export default function TaskApp({
 
   return (
     <>
-      <TaskForm onAddTask={handleAddTask} />
+      <StatsPanel
+        total={stats.total}
+        completed={stats.completed}
+        active={stats.active}
+        overdue={stats.overdue}
+        completedPercentage={
+          stats.completedPercentage
+        }
+      />
 
       <FilterBar
         filter={filter}
@@ -239,7 +330,9 @@ export default function TaskApp({
           onDelete={handleDelete}
           editingId={editingId}
           setEditingId={setEditingId}
-          onUpdateTask={handleUpdateTask}
+          onUpdateTask={
+            handleUpdateTask
+          }
         />
       )}
     </>
