@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Button } from "./index"
 
 interface TaskCardProps {
   title: string
@@ -37,8 +38,10 @@ export default function TaskCard({
   onUpdateTask,
 }: TaskCardProps) {
   const [editTitle, setEditTitle] = useState(title)
-  const [editDescription, setEditDescription] = useState(description)
-  const [editPriority, setEditPriority] = useState(priority)
+  const [editDescription, setEditDescription] =
+    useState(description)
+  const [editPriority, setEditPriority] =
+    useState(priority)
 
   useEffect(() => {
     setEditTitle(title)
@@ -47,7 +50,10 @@ export default function TaskCard({
   }, [title, description, priority, editing])
 
   function handleDelete() {
-    if (onDelete && window.confirm("Are you sure?")) {
+    if (
+      onDelete &&
+      window.confirm("Are you sure?")
+    ) {
       onDelete(taskId!)
     }
   }
@@ -76,30 +82,44 @@ export default function TaskCard({
       <article id="task-card">
         <input
           value={editTitle}
-          onChange={(e) => setEditTitle(e.target.value)}
+          onChange={(e) =>
+            setEditTitle(e.target.value)
+          }
         />
 
         <textarea
           value={editDescription}
-          onChange={(e) => setEditDescription(e.target.value)}
+          onChange={(e) =>
+            setEditDescription(e.target.value)
+          }
         />
 
         <select
           value={editPriority}
-          onChange={(e) => setEditPriority(e.target.value)}
+          onChange={(e) =>
+            setEditPriority(e.target.value)
+          }
         >
           <option value="High">High</option>
-          <option value="Medium">Medium</option>
+          <option value="Medium">
+            Medium
+          </option>
           <option value="Low">Low</option>
         </select>
 
-        <button onClick={handleSave}>
+        <Button
+          variant="primary"
+          onClick={handleSave}
+        >
           Save
-        </button>
+        </Button>
 
-        <button onClick={handleCancel}>
+        <Button
+          variant="secondary"
+          onClick={handleCancel}
+        >
           Cancel
-        </button>
+        </Button>
       </article>
     )
   }
@@ -109,7 +129,9 @@ export default function TaskCard({
       id="task-card"
       data-completed={completed}
       style={{
-        backgroundColor: completed ? "#d4edda" : "white",
+        backgroundColor: completed
+          ? "#d4edda"
+          : "white",
         padding: "10px",
         marginBottom: "10px",
       }}
@@ -118,13 +140,17 @@ export default function TaskCard({
         <input
           type="checkbox"
           checked={completed}
-          onChange={() => onToggle(taskId!)}
+          onChange={() =>
+            onToggle(taskId!)
+          }
         />
       )}
 
       <h2
         style={{
-          textDecoration: completed ? "line-through" : "none",
+          textDecoration: completed
+            ? "line-through"
+            : "none",
         }}
       >
         {title}
@@ -132,7 +158,9 @@ export default function TaskCard({
 
       <p
         style={{
-          textDecoration: completed ? "line-through" : "none",
+          textDecoration: completed
+            ? "line-through"
+            : "none",
         }}
       >
         {description}
@@ -140,14 +168,22 @@ export default function TaskCard({
 
       <p>Priority: {priority}</p>
 
-      <button onClick={() => setEditingId?.(taskId!)}>
+      <Button
+        variant="secondary"
+        onClick={() =>
+          setEditingId?.(taskId!)
+        }
+      >
         Edit
-      </button>
+      </Button>
 
       {onDelete && (
-        <button onClick={handleDelete}>
+        <Button
+          variant="danger"
+          onClick={handleDelete}
+        >
           Delete
-        </button>
+        </Button>
       )}
     </article>
   )

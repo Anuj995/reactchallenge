@@ -1,7 +1,15 @@
 interface BadgeProps {
-  children?: React.ReactNode
+  children: React.ReactNode
+  variant?: string
 }
 
-export default function Badge(_props: BadgeProps) {
-  return null
+export default function Badge({
+  children,
+  variant = "default",
+}: BadgeProps) {
+  return (
+    <span data-variant={variant}>
+      {children}
+    </span>
+  )
 }
