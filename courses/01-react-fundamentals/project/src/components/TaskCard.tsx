@@ -1,4 +1,8 @@
-import { useEffect, useState } from "react"
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+} from "react"
 import { Button } from "./index"
 
 interface TaskCardProps {
@@ -11,8 +15,11 @@ interface TaskCardProps {
   taskId?: string | number
 
   editing?: boolean
+
   setEditingId?: React.Dispatch<
-    React.SetStateAction<string | number | null>
+    React.SetStateAction<
+      string | number | null
+    >
   >
 
   onUpdateTask?: (
@@ -25,7 +32,7 @@ interface TaskCardProps {
   ) => void
 }
 
-export default function TaskCard({
+function TaskCard({
   title,
   description,
   priority,
@@ -37,9 +44,14 @@ export default function TaskCard({
   setEditingId,
   onUpdateTask,
 }: TaskCardProps) {
-  const [editTitle, setEditTitle] = useState(title)
-  const [editDescription, setEditDescription] =
-    useState(description)
+  const [editTitle, setEditTitle] =
+    useState(title)
+
+  const [
+    editDescription,
+    setEditDescription,
+  ] = useState(description)
+
   const [editPriority, setEditPriority] =
     useState(priority)
 
@@ -47,18 +59,23 @@ export default function TaskCard({
     setEditTitle(title)
     setEditDescription(description)
     setEditPriority(priority)
-  }, [title, description, priority, editing])
+  }, [
+    title,
+    description,
+    priority,
+    editing,
+  ])
 
-  function handleDelete() {
+  const handleDelete = useCallback(() => {
     if (
       onDelete &&
       window.confirm("Are you sure?")
     ) {
       onDelete(taskId!)
     }
-  }
+  }, [onDelete, taskId])
 
-  function handleSave() {
+  const handleSave = useCallback(() => {
     if (!editTitle.trim()) return
 
     onUpdateTask?.(taskId!, {
@@ -68,14 +85,27 @@ export default function TaskCard({
     })
 
     setEditingId?.(null)
-  }
+  }, [
+    editTitle,
+    editDescription,
+    editPriority,
+    onUpdateTask,
+    taskId,
+    setEditingId,
+  ])
 
-  function handleCancel() {
+  const handleCancel = useCallback(() => {
     setEditTitle(title)
     setEditDescription(description)
     setEditPriority(priority)
+
     setEditingId?.(null)
-  }
+  }, [
+    title,
+    description,
+    priority,
+    setEditingId,
+  ])
 
   if (editing) {
     return (
@@ -90,21 +120,31 @@ export default function TaskCard({
         <textarea
           value={editDescription}
           onChange={(e) =>
-            setEditDescription(e.target.value)
+            setEditDescription(
+              e.target.value
+            )
           }
         />
 
         <select
           value={editPriority}
           onChange={(e) =>
-            setEditPriority(e.target.value)
+            setEditPriority(
+              e.target.value
+            )
           }
         >
-          <option value="High">High</option>
+          <option value="High">
+            High
+          </option>
+
           <option value="Medium">
             Medium
           </option>
-          <option value="Low">Low</option>
+
+          <option value="Low">
+            Low
+          </option>
         </select>
 
         <Button
@@ -188,3 +228,5 @@ export default function TaskCard({
     </article>
   )
 }
+
+export default React.memo(TaskCard)

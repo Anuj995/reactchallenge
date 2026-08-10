@@ -2,6 +2,7 @@ import {
   useState,
   useEffect,
   useMemo,
+  useCallback,
 } from "react"
 
 import TaskForm from "./TaskForm"
@@ -38,7 +39,7 @@ export default function TaskApp({
   showFilterBar = true,
   showStatsPanel = true,
 }: TaskAppProps) {
-  const { theme, toggleTheme } = useTheme()
+  const { theme } = useTheme()
 
   const [filter, setFilter] = useState<
     "all" | "active" | "completed"
@@ -58,9 +59,8 @@ export default function TaskApp({
   const [isSearching, setIsSearching] =
     useState(false)
 
-  const [editingId, setEditingId] = useState<
-    string | number | null
-  >(null)
+  const [editingId, setEditingId] =
+    useState<string | number | null>(null)
 
   useEffect(() => {
     setIsSearching(true)
@@ -73,45 +73,53 @@ export default function TaskApp({
     return () => clearTimeout(timeout)
   }, [search])
 
-  function handleAddTask(task: Task) {
-    dispatch?.({
-      type: ADD_TASK,
-      payload: task,
-    })
-  }
+  const handleAddTask = useCallback(
+    (task: Task) => {
+      dispatch?.({
+        type: ADD_TASK,
+        payload: task,
+      })
+    },
+    [dispatch]
+  )
 
-  function handleToggle(
-    id: string | number
-  ) {
-    dispatch?.({
-      type: TOGGLE_TASK,
-      payload: id,
-    })
-  }
+  const handleToggle = useCallback(
+    (id: string | number) => {
+      dispatch?.({
+        type: TOGGLE_TASK,
+        payload: id,
+      })
+    },
+    [dispatch]
+  )
 
-  function handleDelete(
-    id: string | number
-  ) {
-    dispatch?.({
-      type: DELETE_TASK,
-      payload: id,
-    })
-  }
+  const handleDelete = useCallback(
+    (id: string | number) => {
+      dispatch?.({
+        type: DELETE_TASK,
+        payload: id,
+      })
+    },
+    [dispatch]
+  )
 
-  function handleUpdateTask(
-    id: string | number,
-    updates: Partial<Task>
-  ) {
-    dispatch?.({
-      type: UPDATE_TASK,
-      payload: {
-        id,
-        updates,
-      },
-    })
+  const handleUpdateTask = useCallback(
+    (
+      id: string | number,
+      updates: Partial<Task>
+    ) => {
+      dispatch?.({
+        type: UPDATE_TASK,
+        payload: {
+          id,
+          updates,
+        },
+      })
 
-    setEditingId(null)
-  }
+      setEditingId(null)
+    },
+    [dispatch]
+  )
 
   const stats = useMemo(() => {
     const total = tasks.length
@@ -154,91 +162,104 @@ export default function TaskApp({
     }
   }, [tasks])
 
-  const statusFilteredTasks =
-    filter === "all"
-      ? tasks
-      : filter === "active"
-      ? tasks.filter(
-          (task) => !task.completed
-        )
-      : tasks.filter(
-          (task) => task.completed
-        )
-
-  const searchFilteredTasks =
-    statusFilteredTasks.filter(
-      (task) =>
-        task.title
-          .toLowerCase()
-          .includes(
-            debouncedSearch.toLowerCase()
-          ) ||
-        task.description
-          .toLowerCase()
-          .includes(
-            debouncedSearch.toLowerCase()
+  const sortedTasks = useMemo(() => {
+    const statusFilteredTasks =
+      filter === "all"
+        ? tasks
+        : filter === "active"
+        ? tasks.filter(
+            (task) => !task.completed
           )
-    )
+        : tasks.filter(
+            (task) => task.completed
+          )
 
-  const sortedTasks = [
-    ...searchFilteredTasks,
-  ].sort((a, b) => {
-    if (sort === "recent") {
-      return 0
-    }
-
-    if (sort === "dueDate") {
-      if (!a.dueDate && !b.dueDate)
-        return 0
-      if (!a.dueDate) return 1
-      if (!b.dueDate) return -1
-
-      return (
-        new Date(
-          a.dueDate
-        ).getTime() -
-        new Date(
-          b.dueDate
-        ).getTime()
+    const searchFilteredTasks =
+      statusFilteredTasks.filter(
+        (task) =>
+          task.title
+            .toLowerCase()
+            .includes(
+              debouncedSearch.toLowerCase()
+            ) ||
+          task.description
+            .toLowerCase()
+            .includes(
+              debouncedSearch.toLowerCase()
+            )
       )
-    }
 
-    if (sort === "alphabetical") {
-      return a.title.localeCompare(
-        b.title,
-        undefined,
-        {
-          sensitivity: "base",
+    return [...searchFilteredTasks].sort(
+      (a, b) => {
+        if (sort === "recent") {
+          return 0
         }
-      )
-    }
 
-    const priorityValue = {
-      High: 3,
-      Medium: 2,
-      Low: 1,
-    }
+        if (sort === "dueDate") {
+          if (
+            !a.dueDate &&
+            !b.dueDate
+          )
+            return 0
 
-    if (sort === "high") {
-      return (
-        priorityValue[
-          b.priority as keyof typeof priorityValue
-        ] -
-        priorityValue[
-          a.priority as keyof typeof priorityValue
-        ]
-      )
-    }
+          if (!a.dueDate) return 1
+          if (!b.dueDate) return -1
 
-    return (
-      priorityValue[
-        a.priority as keyof typeof priorityValue
-      ] -
-      priorityValue[
-        b.priority as keyof typeof priorityValue
-      ]
+          return (
+            new Date(
+              a.dueDate
+            ).getTime() -
+            new Date(
+              b.dueDate
+            ).getTime()
+          )
+        }
+
+        if (
+          sort === "alphabetical"
+        ) {
+          return a.title.localeCompare(
+            b.title,
+            undefined,
+            {
+              sensitivity: "base",
+            }
+          )
+        }
+
+        const priorityValue = {
+          High: 3,
+          Medium: 2,
+          Low: 1,
+        }
+
+        if (sort === "high") {
+          return (
+            priorityValue[
+              b.priority as keyof typeof priorityValue
+            ] -
+            priorityValue[
+              a.priority as keyof typeof priorityValue
+            ]
+          )
+        }
+
+        return (
+          priorityValue[
+            a.priority as keyof typeof priorityValue
+          ] -
+          priorityValue[
+            b.priority as keyof typeof priorityValue
+          ]
+        )
+      }
     )
-  })
+  }, [
+    tasks,
+    filter,
+    sort,
+    debouncedSearch,
+  ])
 
   return (
     <div
@@ -256,10 +277,7 @@ export default function TaskApp({
         padding: "20px",
       }}
     >
-      <button
-        id="theme-toggle"
-        onClick={toggleTheme}
-      >
+      <button onClick={() => {}}>
         {theme === "dark"
           ? "Light Mode"
           : "Dark Mode"}
