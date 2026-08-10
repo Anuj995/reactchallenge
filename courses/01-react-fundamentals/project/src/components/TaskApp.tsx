@@ -10,7 +10,7 @@ import TaskForm from "./TaskForm"
 import TaskList, { type Task } from "./TaskList"
 import FilterBar from "./FilterBar"
 import StatsPanel from "./StatsPanel"
-import { useTheme } from "../contexts/ThemeContext"
+import { useTheme } from "../contexts/useTheme"
 
 interface TaskAppProps {
   tasks?: Task[]
@@ -58,30 +58,7 @@ export default function TaskApp({
     string | number | null
   >(null)
 
-  useEffect(() => {
-    try {
-      const savedTasks = localStorage.getItem(
-        "task-app-tasks"
-      )
-
-      if (savedTasks && setTasks) {
-        const parsedTasks = JSON.parse(
-          savedTasks
-        ) as Task[]
-
-        setTasks(parsedTasks)
-      }
-    } catch {
-      // ignore invalid data
-    }
-  }, [setTasks])
-
-  useEffect(() => {
-    localStorage.setItem(
-      "task-app-tasks",
-      JSON.stringify(tasks)
-    )
-  }, [tasks])
+  
 
   useEffect(() => {
     setIsSearching(true)

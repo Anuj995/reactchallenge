@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import useLocalStorage from "./hooks/useLocalStorage"
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ChallengeList from './components/ChallengeList'
 import TaskList from './components/TaskList'
@@ -18,8 +18,11 @@ const INITIAL_TASKS: Task[] = [
 ]
 
 function AppContent() {
-  const [tasks, setTasks] = useState<Task[]>(INITIAL_TASKS)
-
+  const [tasks, setTasks] =
+  useLocalStorage<Task[]>(
+    "task-app-tasks",
+    INITIAL_TASKS
+  )
   const handleDelete = (id: string | number) => {
     if (window.confirm('Are you sure?')) {
       setTasks((prev) => prev.filter((t) => t.id !== id))
