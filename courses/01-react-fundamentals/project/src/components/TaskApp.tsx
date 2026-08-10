@@ -2,8 +2,6 @@ import {
   useState,
   useEffect,
   useMemo,
-  type Dispatch,
-  type SetStateAction,
 } from "react"
 
 import TaskForm from "./TaskForm"
@@ -12,9 +10,15 @@ import FilterBar from "./FilterBar"
 import StatsPanel from "./StatsPanel"
 import { useTheme } from "../contexts/useTheme"
 
+import {
+  ADD_TASK,
+  UPDATE_TASK,
+  DELETE_TASK,
+  TOGGLE_TASK,
+} from "../reducers/taskReducer"
+
 interface TaskAppProps {
   tasks?: Task[]
-  setTasks?: Dispatch<SetStateAction<Task[]>>
   dispatch?: (action: {
     type: string
     payload?: unknown
@@ -29,7 +33,7 @@ interface TaskAppProps {
 
 export default function TaskApp({
   tasks = [],
-  setTasks,
+  dispatch,
   showForm = true,
   showFilterBar = true,
   showStatsPanel = true,
@@ -58,8 +62,6 @@ export default function TaskApp({
     string | number | null
   >(null)
 
-  
-
   useEffect(() => {
     setIsSearching(true)
 
@@ -72,52 +74,41 @@ export default function TaskApp({
   }, [search])
 
   function handleAddTask(task: Task) {
-    if (setTasks) {
-      setTasks((prev) => [...prev, task])
-    }
+    dispatch?.({
+      type: ADD_TASK,
+      payload: task,
+    })
   }
 
-  function handleToggle(id: string | number) {
-    if (setTasks) {
-      setTasks((prev) =>
-        prev.map((task) =>
-          task.id === id
-            ? {
-                ...task,
-                completed: !task.completed,
-              }
-            : task
-        )
-      )
-    }
+  function handleToggle(
+    id: string | number
+  ) {
+    dispatch?.({
+      type: TOGGLE_TASK,
+      payload: id,
+    })
   }
 
-  function handleDelete(id: string | number) {
-    if (setTasks) {
-      setTasks((prev) =>
-        prev.filter(
-          (task) => task.id !== id
-        )
-      )
-    }
+  function handleDelete(
+    id: string | number
+  ) {
+    dispatch?.({
+      type: DELETE_TASK,
+      payload: id,
+    })
   }
 
   function handleUpdateTask(
     id: string | number,
     updates: Partial<Task>
   ) {
-    if (setTasks) {
-      setTasks((prev) =>
-        prev.map((task) =>
-          task.id === id
-            ? {
-                ...task,
-                ...updates,
-              }
-            : task
-        )
-      )
-    }
+    dispatch?.({
+      type: UPDATE_TASK,
+      payload: {
+        id,
+        updates,
+      },
+    })
 
     setEditingId(null)
   }
@@ -197,17 +188,10 @@ export default function TaskApp({
     }
 
     if (sort === "dueDate") {
-      if (!a.dueDate && !b.dueDate) {
+      if (!a.dueDate && !b.dueDate)
         return 0
-      }
-
-      if (!a.dueDate) {
-        return 1
-      }
-
-      if (!b.dueDate) {
-        return -1
-      }
+      if (!a.dueDate) return 1
+      if (!b.dueDate) return -1
 
       return (
         new Date(
