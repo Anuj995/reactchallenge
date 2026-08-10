@@ -5,10 +5,12 @@ import {
   type Dispatch,
   type SetStateAction,
 } from "react"
+
 import TaskForm from "./TaskForm"
 import TaskList, { type Task } from "./TaskList"
 import FilterBar from "./FilterBar"
 import StatsPanel from "./StatsPanel"
+import { useTheme } from "../contexts/ThemeContext"
 
 interface TaskAppProps {
   tasks?: Task[]
@@ -28,7 +30,12 @@ interface TaskAppProps {
 export default function TaskApp({
   tasks = [],
   setTasks,
+  showForm = true,
+  showFilterBar = true,
+  showStatsPanel = true,
 }: TaskAppProps) {
+  const { theme, toggleTheme } = useTheme()
+
   const [filter, setFilter] = useState<
     "all" | "active" | "completed"
   >("all")
@@ -65,9 +72,9 @@ export default function TaskApp({
         setTasks(parsedTasks)
       }
     } catch {
-      // ignore invalid localStorage data
+      // ignore invalid data
     }
-  }, [])
+  }, [setTasks])
 
   useEffect(() => {
     localStorage.setItem(
@@ -87,28 +94,20 @@ export default function TaskApp({
     return () => clearTimeout(timeout)
   }, [search])
 
-  function handleAddTask(
-    task: Record<string, unknown>
-  ) {
+  function handleAddTask(task: Task) {
     if (setTasks) {
-      setTasks((prev) => [
-        ...prev,
-        task as Task,
-      ])
+      setTasks((prev) => [...prev, task])
     }
   }
 
-  function handleToggle(
-    id: string | number
-  ) {
+  function handleToggle(id: string | number) {
     if (setTasks) {
       setTasks((prev) =>
         prev.map((task) =>
           task.id === id
             ? {
                 ...task,
-                completed:
-                  !task.completed,
+                completed: !task.completed,
               }
             : task
         )
@@ -116,9 +115,7 @@ export default function TaskApp({
     }
   }
 
-  function handleDelete(
-    id: string | number
-  ) {
+  function handleDelete(id: string | number) {
     if (setTasks) {
       setTasks((prev) =>
         prev.filter(
@@ -223,10 +220,7 @@ export default function TaskApp({
     }
 
     if (sort === "dueDate") {
-      if (
-        !a.dueDate &&
-        !b.dueDate
-      ) {
+      if (!a.dueDate && !b.dueDate) {
         return 0
       }
 
@@ -248,9 +242,7 @@ export default function TaskApp({
       )
     }
 
-    if (
-      sort === "alphabetical"
-    ) {
+    if (sort === "alphabetical") {
       return a.title.localeCompare(
         b.title,
         undefined,
@@ -288,25 +280,58 @@ export default function TaskApp({
   })
 
   return (
-    <>
-      <StatsPanel
-        total={stats.total}
-        completed={stats.completed}
-        active={stats.active}
-        overdue={stats.overdue}
-        completedPercentage={
-          stats.completedPercentage
-        }
-      />
+    <div
+      data-theme={theme}
+      style={{
+        backgroundColor:
+          theme === "dark"
+            ? "#1e1e1e"
+            : "#ffffff",
+        color:
+          theme === "dark"
+            ? "#ffffff"
+            : "#000000",
+        minHeight: "100vh",
+        padding: "20px",
+      }}
+    >
+      <button
+        id="theme-toggle"
+        onClick={toggleTheme}
+      >
+        {theme === "dark"
+          ? "Light Mode"
+          : "Dark Mode"}
+      </button>
 
-      <FilterBar
-        filter={filter}
-        onFilterChange={setFilter}
-        sort={sort}
-        onSortChange={setSort}
-        search={search}
-        onSearchChange={setSearch}
-      />
+      {showForm && (
+        <TaskForm
+          onAddTask={handleAddTask}
+        />
+      )}
+
+      {showStatsPanel && (
+        <StatsPanel
+          total={stats.total}
+          completed={stats.completed}
+          active={stats.active}
+          overdue={stats.overdue}
+          completedPercentage={
+            stats.completedPercentage
+          }
+        />
+      )}
+
+      {showFilterBar && (
+        <FilterBar
+          filter={filter}
+          onFilterChange={setFilter}
+          sort={sort}
+          onSortChange={setSort}
+          search={search}
+          onSearchChange={setSearch}
+        />
+      )}
 
       {isSearching && (
         <p id="searching-indicator">
@@ -335,6 +360,6 @@ export default function TaskApp({
           }
         />
       )}
-    </>
+    </div>
   )
 }
