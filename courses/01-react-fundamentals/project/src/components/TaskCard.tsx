@@ -3,6 +3,7 @@ import React, {
   useState,
   useCallback,
 } from "react"
+import { Link } from "react-router-dom"
 import { Button } from "./index"
 
 interface TaskCardProps {
@@ -10,6 +11,10 @@ interface TaskCardProps {
   description: string
   priority: string
   completed?: boolean
+
+  category?: string
+  tags?: string[]
+
   onToggle?: (id: string | number) => void
   onDelete?: (id: string | number) => void
   taskId?: string | number
@@ -30,6 +35,8 @@ interface TaskCardProps {
       priority: string
     }
   ) => void
+
+  linkToTaskDetail?: boolean
 }
 
 function TaskCard({
@@ -43,6 +50,7 @@ function TaskCard({
   editing = false,
   setEditingId,
   onUpdateTask,
+  linkToTaskDetail = false,
 }: TaskCardProps) {
   const [editTitle, setEditTitle] =
     useState(title)
@@ -193,7 +201,15 @@ function TaskCard({
             : "none",
         }}
       >
-        {title}
+        {linkToTaskDetail ? (
+          <Link
+            to={`/challenge/21-react-router/task/${taskId}`}
+          >
+            {title}
+          </Link>
+        ) : (
+          title
+        )}
       </h2>
 
       <p

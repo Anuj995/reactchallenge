@@ -1,23 +1,23 @@
 {
-  "lastUpdated": "2026-08-10T17:00:25.226Z",
+  "lastUpdated": "2026-08-11T13:05:26.460Z",
   "pathway": {
     "name": "Modern React Engineer",
     "version": "1.0.0",
-    "overallScore": 30.6,
-    "completionPercentage": 35.8,
+    "overallScore": 31.3,
+    "completionPercentage": 39.6,
     "badgeLevel": "none",
     "totalChallenges": 53,
-    "completedChallenges": 19
+    "completedChallenges": 21
   },
   "courses": {
     "01-react-fundamentals": {
       "courseId": "01-react-fundamentals",
       "courseName": "React Fundamentals",
-      "averageScore": 92.8,
-      "completionPercentage": 82.6,
+      "averageScore": 94.7,
+      "completionPercentage": 91.3,
       "badgeLevel": "silver",
       "totalChallenges": 23,
-      "completedChallenges": 19,
+      "completedChallenges": 21,
       "challenges": {
         "01-static-task-display": {
           "challengeId": "01-static-task-display",
@@ -278,14 +278,14 @@
           "challengeId": "18-usereducer-complex-state",
           "challengeName": "useReducer - Complex State Management",
           "passed": true,
-          "score": 83.2,
-          "lastRun": "2026-08-10T16:50:18.902Z",
+          "score": 98.2,
+          "lastRun": "2026-08-11T12:57:26.681Z",
           "scores": {
             "functionalTests": 100,
             "codeQuality": 100,
             "architecture": 100,
             "bestPractices": 100,
-            "e2eTests": 0,
+            "e2eTests": 100,
             "aiReview": 88
           }
         },
@@ -293,14 +293,44 @@
           "challengeId": "19-performance-optimization",
           "challengeName": "Performance Optimization",
           "passed": true,
-          "score": 83.2,
-          "lastRun": "2026-08-10T16:59:54.264Z",
+          "score": 97.45,
+          "lastRun": "2026-08-11T12:56:43.233Z",
           "scores": {
             "functionalTests": 100,
             "codeQuality": 100,
             "architecture": 100,
             "bestPractices": 100,
-            "e2eTests": 0,
+            "e2eTests": 100,
+            "aiReview": 83
+          }
+        },
+        "20-error-boundaries": {
+          "challengeId": "20-error-boundaries",
+          "challengeName": "Error Boundaries and Error Handling",
+          "passed": true,
+          "score": 98.2,
+          "lastRun": "2026-08-11T12:54:44.828Z",
+          "scores": {
+            "functionalTests": 100,
+            "codeQuality": 100,
+            "architecture": 100,
+            "bestPractices": 100,
+            "e2eTests": 100,
+            "aiReview": 88
+          }
+        },
+        "21-react-router": {
+          "challengeId": "21-react-router",
+          "challengeName": "React Router - Routing and Navigation",
+          "passed": true,
+          "score": 98.2,
+          "lastRun": "2026-08-11T13:04:57.554Z",
+          "scores": {
+            "functionalTests": 100,
+            "codeQuality": 100,
+            "architecture": 100,
+            "bestPractices": 100,
+            "e2eTests": 100,
             "aiReview": 88
           }
         }

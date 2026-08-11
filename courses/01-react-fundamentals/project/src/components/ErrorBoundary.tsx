@@ -1,17 +1,63 @@
-import { Component, type ReactNode } from 'react'
+import { Component, type ReactNode } from "react"
 
-interface Props {
+interface ErrorBoundaryProps {
   children: ReactNode
 }
 
-interface State {
+interface ErrorBoundaryState {
   hasError: boolean
 }
 
-export default class ErrorBoundary extends Component<Props, State> {
-  state: State = { hasError: false }
+class ErrorBoundary extends Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
+  constructor(props: ErrorBoundaryProps) {
+    super(props)
+
+    this.state = {
+      hasError: false,
+    }
+  }
+
+  static getDerivedStateFromError() {
+    return {
+      hasError: true,
+    }
+  }
+
+  componentDidCatch() {
+    // Intentionally empty
+  }
+
+  handleRetry = () => {
+    this.setState({
+      hasError: false,
+    })
+  }
 
   render() {
+    if (this.state.hasError) {
+      return (
+        <div id="error-boundary-fallback">
+          <h2>Something went wrong</h2>
+
+          <p>
+            Please try again.
+          </p>
+
+          <button
+            id="error-retry"
+            onClick={this.handleRetry}
+          >
+            Retry
+          </button>
+        </div>
+      )
+    }
+
     return this.props.children
   }
 }
+
+export default ErrorBoundary

@@ -1,4 +1,8 @@
-import { useState, type Dispatch, type SetStateAction } from "react"
+import {
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react"
 
 export default function useLocalStorage<T>(
   key: string,
@@ -18,19 +22,29 @@ export default function useLocalStorage<T>(
     }
   })
 
-  const setStoredValue: Dispatch<SetStateAction<T>> = (
-    newValue
-  ) => {
+  const setStoredValue: Dispatch<
+    SetStateAction<T>
+  > = (newValue) => {
     setValue((prev) => {
       const valueToStore =
         typeof newValue === "function"
-          ? (newValue as (prev: T) => T)(prev)
+          ? (
+              newValue as (
+                prev: T
+              ) => T
+            )(prev)
           : newValue
 
-      localStorage.setItem(
-        key,
-        JSON.stringify(valueToStore)
-      )
+      try {
+        localStorage.setItem(
+          key,
+          JSON.stringify(
+            valueToStore
+          )
+        )
+      } catch {
+        // Ignore storage errors
+      }
 
       return valueToStore
     })

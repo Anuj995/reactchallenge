@@ -69,6 +69,7 @@ export default function TaskList({
   editingId,
   setEditingId,
   onUpdateTask,
+  linkToTaskDetail = false,
 }: TaskListProps) {
   const list: Task[] = tasks ?? HARDCODED_TASKS
 
@@ -96,6 +97,7 @@ export default function TaskList({
             editing={editingId === task.id}
             setEditingId={setEditingId}
             onUpdateTask={onUpdateTask}
+            linkToTaskDetail={linkToTaskDetail}
           />
         ))}
       </section>

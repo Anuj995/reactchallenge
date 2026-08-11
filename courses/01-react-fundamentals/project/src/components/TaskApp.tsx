@@ -9,7 +9,8 @@ import TaskForm from "./TaskForm"
 import TaskList, { type Task } from "./TaskList"
 import FilterBar from "./FilterBar"
 import StatsPanel from "./StatsPanel"
-import { useTheme } from "../contexts/useTheme"
+import useTheme from "../contexts/useTheme"
+import ErrorBoundary from "./ErrorBoundary"
 
 import {
   ADD_TASK,
@@ -38,6 +39,7 @@ export default function TaskApp({
   showForm = true,
   showFilterBar = true,
   showStatsPanel = true,
+  linkToTaskDetail = false,
 }: TaskAppProps) {
   const { theme } = useTheme()
 
@@ -328,16 +330,19 @@ export default function TaskApp({
           No tasks found
         </p>
       ) : (
-        <TaskList
-          tasks={sortedTasks}
-          onToggle={handleToggle}
-          onDelete={handleDelete}
-          editingId={editingId}
-          setEditingId={setEditingId}
-          onUpdateTask={
-            handleUpdateTask
-          }
-        />
+        <ErrorBoundary>
+          <TaskList
+            tasks={sortedTasks}
+            onToggle={handleToggle}
+            onDelete={handleDelete}
+            editingId={editingId}
+            setEditingId={setEditingId}
+            onUpdateTask={handleUpdateTask}
+            linkToTaskDetail={
+              linkToTaskDetail
+            }
+          />
+        </ErrorBoundary>
       )}
     </div>
   )
