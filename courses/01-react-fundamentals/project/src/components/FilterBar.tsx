@@ -2,10 +2,20 @@ interface FilterBarProps {
   filter: "all" | "active" | "completed"
   onFilterChange: (filter: "all" | "active" | "completed") => void
 
-  sort: "recent" | "high" | "low" | "alphabetical"
-  onSortChange: (
-    sort: "recent" | "high" | "low" | "alphabetical"
-  ) => void
+  sort:
+  | "recent"
+  | "high"
+  | "low"
+  | "alphabetical"
+  | "dueDate"
+ onSortChange: (
+  value:
+    | "recent"
+    | "high"
+    | "low"
+    | "alphabetical"
+    | "dueDate"
+) => void
 
   search: string
   onSearchChange: (value: string) => void
