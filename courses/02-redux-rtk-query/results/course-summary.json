@@ -1,11 +1,11 @@
 {
   "courseId": "02-redux-rtk-query",
   "courseName": "Redux & RTK Query",
-  "lastUpdated": "2026-08-20T12:15:36.014Z",
+  "lastUpdated": "2026-08-20T13:04:10.327Z",
   "totalChallenges": 13,
-  "completedChallenges": 2,
-  "averageScore": 48.6,
-  "completionPercentage": 15.4,
+  "completedChallenges": 3,
+  "averageScore": 52.5,
+  "completionPercentage": 23.1,
   "badgeLevel": "none",
   "challengeResults": [
     {
@@ -23,8 +23,8 @@
     {
       "challengeId": "03-reading-dispatching",
       "challengeName": "Reading and Dispatching in Components",
-      "score": 36.655,
-      "passed": false
+      "score": 88.05,
+      "passed": true
     },
     {
       "challengeId": "04-multiple-slices",
@@ -89,10 +89,10 @@
   ],
   "skillStrengths": [
     "Store Setup with configureStore",
-    "First Slice with createSlice"
+    "First Slice with createSlice",
+    "Reading and Dispatching in Components"
   ],
   "improvementAreas": [
-    "Reading and Dispatching in Components",
     "Multiple Slices in the Store",
     "Async Logic with createAsyncThunk",
     "RTK Query Setup and API Slice",
