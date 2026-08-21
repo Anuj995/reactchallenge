@@ -1,14 +1,5 @@
 [
   {
-    "challengeId": "07-queries",
-    "challengeName": "Query Endpoints and useQuery Hooks",
-    "aiReview": {
-      "error": "Functional tests must pass first (1/3 passed)",
-      "score": 0,
-      "skipped": true
-    }
-  },
-  {
     "challengeId": "08-caching-refetch",
     "challengeName": "Caching and Cache Tags",
     "aiReview": {
@@ -216,6 +207,22 @@
       "maintainability": 80,
       "overall": "The implementation satisfies the core functional requirements: an API slice with a query endpoint and the store wired up with the reducer and middleware. The code is clean and well‑typed, but a few adjustments—particularly around the typed dispatch hook and the baseQuery implementation—will align it more closely with RTK Query best practices and improve maintainability.",
       "requirementCompliance": 90
+    }
+  },
+  {
+    "challengeId": "07-queries",
+    "challengeName": "Query Endpoints and useQuery Hooks",
+    "aiReview": {
+      "challengeId": "07-queries",
+      "timestamp": "2026-08-21T13:36:33.977Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "requirementCompliance": 0
     }
   }
 ]
