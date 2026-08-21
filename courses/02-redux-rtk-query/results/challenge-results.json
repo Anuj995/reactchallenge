@@ -2555,25 +2555,25 @@
   {
     "challengeId": "10-optimistic-updates",
     "challengeName": "Optimistic Updates",
-    "timestamp": "2026-08-18T19:34:12.609Z",
+    "timestamp": "2026-08-21T13:48:50.839Z",
     "scores": {
-      "functionalTests": 0,
-      "codeQuality": 0,
+      "functionalTests": 100,
+      "codeQuality": 100,
       "architecture": 100,
       "bestPractices": 100,
       "e2eTests": 100,
       "aiReview": 0
     },
-    "totalScore": 35,
-    "passed": false,
+    "totalScore": 85,
+    "passed": true,
     "errors": [],
     "warnings": [],
     "testResults": {
-      "score": 0,
-      "passed": false,
+      "score": 100,
+      "passed": true,
       "totalTests": 3,
-      "passedTests": 0,
-      "failedTests": 3,
+      "passedTests": 3,
+      "failedTests": 0,
       "details": [
         {
           "assertionResults": [
@@ -2583,16 +2583,10 @@
                 "Challenge 10: Optimistic Updates"
               ],
               "fullName": " Challenge 10: Optimistic Updates API slice mutation has onQueryStarted",
-              "status": "failed",
+              "status": "passed",
               "title": "API slice mutation has onQueryStarted",
-              "duration": 14,
-              "failureMessages": [
-                "expected false to be true // Object.is equality"
-              ],
-              "location": {
-                "line": 14,
-                "column": 33
-              }
+              "duration": 4,
+              "failureMessages": []
             },
             {
               "ancestorTitles": [
@@ -2600,16 +2594,10 @@
                 "Challenge 10: Optimistic Updates"
               ],
               "fullName": " Challenge 10: Optimistic Updates optimistic update uses queryFulfilled or updateQueryData",
-              "status": "failed",
+              "status": "passed",
               "title": "optimistic update uses queryFulfilled or updateQueryData",
-              "duration": 3,
-              "failureMessages": [
-                "ENOENT: no such file or directory, open 'C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\src\\api\\apiSlice.ts'"
-              ],
-              "location": {
-                "line": 442,
-                "column": 20
-              }
+              "duration": 1,
+              "failureMessages": []
             },
             {
               "ancestorTitles": [
@@ -2617,32 +2605,48 @@
                 "Challenge 10: Optimistic Updates"
               ],
               "fullName": " Challenge 10: Optimistic Updates has rollback or undo on error",
-              "status": "failed",
+              "status": "passed",
               "title": "has rollback or undo on error",
               "duration": 1,
-              "failureMessages": [
-                "ENOENT: no such file or directory, open 'C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\src\\api\\apiSlice.ts'"
-              ],
-              "location": {
-                "line": 442,
-                "column": 20
-              }
+              "failureMessages": []
             }
           ],
-          "startTime": 1787081658691,
-          "endTime": 1787081658709,
-          "status": "failed",
+          "startTime": 1787320136383,
+          "endTime": 1787320136389,
+          "status": "passed",
           "message": "",
           "name": "C:/Users/anujk/OneDrive/Desktop/Challenges/challenge-engine-react/courses/02-redux-rtk-query/project/tests/challenge-10.test.tsx"
         }
-      ],
-      "error": "Command failed: npx vitest run \"C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\challenge-10.test.tsx\" --reporter=json"
+      ]
     },
     "lintResults": {
-      "score": 0,
-      "passed": false,
-      "error": "None of the specified files exist",
-      "details": []
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\src\\api\\apiSlice.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
     },
     "architectureResults": {
       "score": 100,
@@ -2652,7 +2656,6 @@
       "details": [
         {
           "file": "src/api/apiSlice.ts",
-          "error": "File does not exist",
           "patternsFound": [],
           "patternsMissing": []
         }
@@ -2701,12 +2704,12 @@
                           "workerIndex": 0,
                           "parallelIndex": 0,
                           "status": "passed",
-                          "duration": 2071,
+                          "duration": 2017,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-08-18T19:34:29.271Z",
+                          "startTime": "2026-08-21T13:49:11.069Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -2727,9 +2730,28 @@
       "screenshots": []
     },
     "aiReviewResults": {
-      "error": "Functional tests must pass first (0/3 passed)",
+      "challengeId": "10-optimistic-updates",
+      "timestamp": "2026-08-21T13:49:13.902Z",
       "score": 0,
-      "skipped": true
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "requirementCompliance": 0
+    },
+    "aiResults": {
+      "challengeId": "10-optimistic-updates",
+      "timestamp": "2026-08-21T13:49:13.902Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "requirementCompliance": 0
     }
   },
   {

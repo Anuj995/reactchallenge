@@ -65,6 +65,33 @@ export const apiSlice = createApi({
             ],
     }),
 
+    getPosts: builder.query<Post[], void>({
+      queryFn: async () => {
+        return {
+          data: [],
+        }
+      },
+
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({
+                type: 'Post' as const,
+                id,
+              })),
+              {
+                type: 'Post' as const,
+                id: 'LIST',
+              },
+            ]
+          : [
+              {
+                type: 'Post' as const,
+                id: 'LIST',
+              },
+            ],
+    }),
+
     addPost: builder.mutation<Post, Partial<Post>>({
       queryFn: async (post) => {
         return {
@@ -82,11 +109,37 @@ export const apiSlice = createApi({
           id: 'LIST',
         },
       ],
+
+      async onQueryStarted(
+        arg,
+        { dispatch, queryFulfilled }
+      ) {
+        const patchResult = dispatch(
+          apiSlice.util.updateQueryData(
+            'getPosts',
+            undefined,
+            (draft) => {
+              draft.push({
+                id: Date.now(),
+                title: arg.title ?? '',
+                body: arg.body ?? '',
+              })
+            }
+          )
+        )
+
+        try {
+          await queryFulfilled
+        } catch {
+          patchResult.undo()
+        }
+      },
     }),
   }),
 })
 
 export const {
   useGetUsersQuery,
+  useGetPostsQuery,
   useAddPostMutation,
 } = apiSlice
