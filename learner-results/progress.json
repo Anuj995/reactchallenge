@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-08-21T13:53:30.601Z",
+  "lastUpdated": "2026-08-21T13:56:16.227Z",
   "pathway": {
     "name": "Modern React Engineer",
     "version": "1.0.0",
-    "overallScore": 58.2,
-    "completionPercentage": 64.2,
+    "overallScore": 59.7,
+    "completionPercentage": 66,
     "badgeLevel": "none",
     "totalChallenges": 53,
-    "completedChallenges": 34
+    "completedChallenges": 35
   },
   "courses": {
     "01-react-fundamentals": {
@@ -369,11 +369,11 @@
     "02-redux-rtk-query": {
       "courseId": "02-redux-rtk-query",
       "courseName": "Redux & RTK Query",
-      "averageScore": 81.9,
-      "completionPercentage": 84.6,
+      "averageScore": 86.2,
+      "completionPercentage": 92.3,
       "badgeLevel": "silver",
       "totalChallenges": 13,
-      "completedChallenges": 11,
+      "completedChallenges": 12,
       "challenges": {
         "01-store-setup": {
           "challengeId": "01-store-setup",
@@ -543,16 +543,16 @@
         "12-error-loading-ux": {
           "challengeId": "12-error-loading-ux",
           "challengeName": "Error and Loading UX",
-          "passed": false,
-          "score": 32.5,
-          "lastRun": "2026-08-18T19:35:31.369Z",
+          "passed": true,
+          "score": 87.9,
+          "lastRun": "2026-08-21T13:55:49.103Z",
           "scores": {
-            "functionalTests": 0,
+            "functionalTests": 100,
             "codeQuality": 100,
             "architecture": 0,
             "bestPractices": 100,
-            "e2eTests": 50,
-            "aiReview": 0
+            "e2eTests": 100,
+            "aiReview": 86
           }
         },
         "13-query-parameters": {
