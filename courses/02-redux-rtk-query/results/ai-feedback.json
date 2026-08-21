@@ -1,14 +1,5 @@
 [
   {
-    "challengeId": "09-mutations",
-    "challengeName": "Mutations with useMutation",
-    "aiReview": {
-      "error": "Functional tests must pass first (0/3 passed)",
-      "score": 0,
-      "skipped": true
-    }
-  },
-  {
     "challengeId": "10-optimistic-updates",
     "challengeName": "Optimistic Updates",
     "aiReview": {
@@ -222,6 +213,22 @@
     "aiReview": {
       "challengeId": "08-caching-refetch",
       "timestamp": "2026-08-21T13:44:03.352Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "requirementCompliance": 0
+    }
+  },
+  {
+    "challengeId": "09-mutations",
+    "challengeName": "Mutations with useMutation",
+    "aiReview": {
+      "challengeId": "09-mutations",
+      "timestamp": "2026-08-21T13:46:59.338Z",
       "score": 0,
       "feedback": [],
       "strengths": [],
