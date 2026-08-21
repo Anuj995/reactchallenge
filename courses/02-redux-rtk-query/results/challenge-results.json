@@ -1220,25 +1220,25 @@
   {
     "challengeId": "05-async-thunks",
     "challengeName": "Async Logic with createAsyncThunk",
-    "timestamp": "2026-08-18T19:30:36.974Z",
+    "timestamp": "2026-08-21T13:18:48.890Z",
     "scores": {
-      "functionalTests": 0,
+      "functionalTests": 100,
       "codeQuality": 100,
-      "architecture": 100,
+      "architecture": 50,
       "bestPractices": 100,
       "e2eTests": 100,
-      "aiReview": 0
+      "aiReview": 86
     },
-    "totalScore": 50,
-    "passed": false,
+    "totalScore": 92.9,
+    "passed": true,
     "errors": [],
     "warnings": [],
     "testResults": {
-      "score": 0,
-      "passed": false,
+      "score": 100,
+      "passed": true,
       "totalTests": 3,
-      "passedTests": 0,
-      "failedTests": 3,
+      "passedTests": 3,
+      "failedTests": 0,
       "details": [
         {
           "assertionResults": [
@@ -1248,16 +1248,10 @@
                 "Challenge 05: Async Logic with createAsyncThunk"
               ],
               "fullName": " Challenge 05: Async Logic with createAsyncThunk usersSlice uses createAsyncThunk",
-              "status": "failed",
+              "status": "passed",
               "title": "usersSlice uses createAsyncThunk",
-              "duration": 15,
-              "failureMessages": [
-                "expected false to be true // Object.is equality"
-              ],
-              "location": {
-                "line": 14,
-                "column": 35
-              }
+              "duration": 4,
+              "failureMessages": []
             },
             {
               "ancestorTitles": [
@@ -1265,16 +1259,10 @@
                 "Challenge 05: Async Logic with createAsyncThunk"
               ],
               "fullName": " Challenge 05: Async Logic with createAsyncThunk usersSlice uses extraReducers",
-              "status": "failed",
+              "status": "passed",
               "title": "usersSlice uses extraReducers",
               "duration": 2,
-              "failureMessages": [
-                "expected false to be true // Object.is equality"
-              ],
-              "location": {
-                "line": 21,
-                "column": 35
-              }
+              "failureMessages": []
             },
             {
               "ancestorTitles": [
@@ -1282,26 +1270,19 @@
                 "Challenge 05: Async Logic with createAsyncThunk"
               ],
               "fullName": " Challenge 05: Async Logic with createAsyncThunk store includes users reducer",
-              "status": "failed",
+              "status": "passed",
               "title": "store includes users reducer",
-              "duration": 3,
-              "failureMessages": [
-                "expected 'import { configureStore } from \"@redu…' to match /users|usersReducer/"
-              ],
-              "location": {
-                "line": 29,
-                "column": 21
-              }
+              "duration": 2,
+              "failureMessages": []
             }
           ],
-          "startTime": 1787081442686,
-          "endTime": 1787081442706,
-          "status": "failed",
+          "startTime": 1787318352996,
+          "endTime": 1787318353004,
+          "status": "passed",
           "message": "",
           "name": "C:/Users/anujk/OneDrive/Desktop/Challenges/challenge-engine-react/courses/02-redux-rtk-query/project/tests/challenge-05.test.tsx"
         }
-      ],
-      "error": "Command failed: npx vitest run \"C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\challenge-05.test.tsx\" --reporter=json"
+      ]
     },
     "lintResults": {
       "score": 100,
@@ -1310,6 +1291,26 @@
       "errors": 0,
       "warnings": 0,
       "details": [
+        {
+          "filePath": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\src\\store\\slices\\usersSlice.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
         {
           "filePath": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\src\\store\\store.ts",
           "messages": [],
@@ -1333,30 +1334,34 @@
       ]
     },
     "architectureResults": {
-      "score": 100,
-      "passed": true,
+      "score": 50,
+      "passed": false,
       "patternsFound": [
         "reducer",
+        "reducer"
+      ],
+      "patternsMissing": [
+        "middleware",
         "middleware"
       ],
-      "patternsMissing": [],
       "details": [
         {
           "file": "src/store/slices/usersSlice.ts",
-          "error": "File does not exist",
-          "patternsFound": [],
+          "patternsFound": [
+            "reducer"
+          ],
           "patternsMissing": [
-            "reducer",
             "middleware"
           ]
         },
         {
           "file": "src/store/store.ts",
           "patternsFound": [
-            "reducer",
-            "middleware"
+            "reducer"
           ],
-          "patternsMissing": []
+          "patternsMissing": [
+            "middleware"
+          ]
         }
       ]
     },
@@ -1403,12 +1408,12 @@
                           "workerIndex": 0,
                           "parallelIndex": 0,
                           "status": "passed",
-                          "duration": 2047,
+                          "duration": 2136,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-08-18T19:30:57.755Z",
+                          "startTime": "2026-08-21T13:19:41.194Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -1437,12 +1442,12 @@
                           "workerIndex": 0,
                           "parallelIndex": 0,
                           "status": "passed",
-                          "duration": 375,
+                          "duration": 408,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-08-18T19:31:00.038Z",
+                          "startTime": "2026-08-21T13:19:43.936Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -1463,9 +1468,48 @@
       "screenshots": []
     },
     "aiReviewResults": {
-      "error": "Functional tests must pass first (0/3 passed)",
-      "score": 0,
-      "skipped": true
+      "challengeId": "05-async-thunks",
+      "timestamp": "2026-08-21T13:19:45.076Z",
+      "score": 86,
+      "feedback": [],
+      "strengths": [
+        "Clear separation of concerns: the async logic lives in `usersSlice.ts` while the store configuration is isolated in `store.ts`.",
+        "Proper use of TypeScript interfaces (`User`, `UsersState`) that enforce shape of state and payloads.",
+        "Consistent naming conventions (`fetchUsers`, `usersReducer`) and no console statements, keeping the code clean."
+      ],
+      "improvements": [
+        "Explicitly type the thunk payload: `export const fetchUsers = createAsyncThunk<User[], void>('users/fetchUsers', () => mockApi.getUsers());` – this gives better type inference for `action.payload` in the fulfilled case.",
+        "Add a `reset` or `clear` reducer in the slice if the UI ever needs to clear the list or error state. This keeps the slice self‑contained and easier to test.",
+        "Consider moving the `User` interface to a shared `types.ts` file if other slices/components will use it – this reduces duplication and eases future schema changes.",
+        "Add JSDoc comments to the thunk and slice for future developers to understand intent without digging into implementation.",
+        "If you plan to expand the API layer, create a dedicated `api` folder with a `usersApi.ts` that exports the thunk – this keeps API logic separate from state logic."
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The implementation satisfies all functional requirements: it correctly uses `createAsyncThunk` and `extraReducers`, integrates the reducer into the store, and follows TypeScript best practices. While RTK Query is not part of this challenge, the code demonstrates solid async‑handling patterns that would translate well to RTK Query if needed.",
+      "requirementCompliance": 90
+    },
+    "aiResults": {
+      "challengeId": "05-async-thunks",
+      "timestamp": "2026-08-21T13:19:45.076Z",
+      "score": 86,
+      "feedback": [],
+      "strengths": [
+        "Clear separation of concerns: the async logic lives in `usersSlice.ts` while the store configuration is isolated in `store.ts`.",
+        "Proper use of TypeScript interfaces (`User`, `UsersState`) that enforce shape of state and payloads.",
+        "Consistent naming conventions (`fetchUsers`, `usersReducer`) and no console statements, keeping the code clean."
+      ],
+      "improvements": [
+        "Explicitly type the thunk payload: `export const fetchUsers = createAsyncThunk<User[], void>('users/fetchUsers', () => mockApi.getUsers());` – this gives better type inference for `action.payload` in the fulfilled case.",
+        "Add a `reset` or `clear` reducer in the slice if the UI ever needs to clear the list or error state. This keeps the slice self‑contained and easier to test.",
+        "Consider moving the `User` interface to a shared `types.ts` file if other slices/components will use it – this reduces duplication and eases future schema changes.",
+        "Add JSDoc comments to the thunk and slice for future developers to understand intent without digging into implementation.",
+        "If you plan to expand the API layer, create a dedicated `api` folder with a `usersApi.ts` that exports the thunk – this keeps API logic separate from state logic."
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The implementation satisfies all functional requirements: it correctly uses `createAsyncThunk` and `extraReducers`, integrates the reducer into the store, and follows TypeScript best practices. While RTK Query is not part of this challenge, the code demonstrates solid async‑handling patterns that would translate well to RTK Query if needed.",
+      "requirementCompliance": 90
     }
   },
   {
