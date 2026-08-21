@@ -1,14 +1,5 @@
 [
   {
-    "challengeId": "11-api-local-state",
-    "challengeName": "API and Local State Together",
-    "aiReview": {
-      "error": "Functional tests must pass first (0/3 passed)",
-      "score": 0,
-      "skipped": true
-    }
-  },
-  {
     "challengeId": "12-error-loading-ux",
     "challengeName": "Error and Loading UX",
     "aiReview": {
@@ -236,6 +227,22 @@
     "aiReview": {
       "challengeId": "10-optimistic-updates",
       "timestamp": "2026-08-21T13:49:13.902Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "requirementCompliance": 0
+    }
+  },
+  {
+    "challengeId": "11-api-local-state",
+    "challengeName": "API and Local State Together",
+    "aiReview": {
+      "challengeId": "11-api-local-state",
+      "timestamp": "2026-08-21T13:53:26.478Z",
       "score": 0,
       "feedback": [],
       "strengths": [],
