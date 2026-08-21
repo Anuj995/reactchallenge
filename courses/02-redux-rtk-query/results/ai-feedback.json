@@ -1,14 +1,5 @@
 [
   {
-    "challengeId": "13-query-parameters",
-    "challengeName": "Query with Parameters and Detail View",
-    "aiReview": {
-      "error": "Functional tests must pass first (1/3 passed)",
-      "score": 0,
-      "skipped": true
-    }
-  },
-  {
     "challengeId": "01-store-setup",
     "challengeName": "Store Setup with configureStore",
     "aiReview": {
@@ -268,6 +259,22 @@
       "maintainability": 80,
       "overall": "The implementation satisfies the core requirements: a reusable ErrorDisplay, a users list that shows loading and error states, and a retry mechanism via `refetch`. The code is clean and follows RTK Query best practices, though a few type‑safety and UX niceties could be added for robustness.",
       "requirementCompliance": 90
+    }
+  },
+  {
+    "challengeId": "13-query-parameters",
+    "challengeName": "Query with Parameters and Detail View",
+    "aiReview": {
+      "challengeId": "13-query-parameters",
+      "timestamp": "2026-08-21T14:08:43.971Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "requirementCompliance": 0
     }
   }
 ]

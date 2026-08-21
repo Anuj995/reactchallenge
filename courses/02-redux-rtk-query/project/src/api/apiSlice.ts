@@ -92,6 +92,35 @@ export const apiSlice = createApi({
             ],
     }),
 
+    getPostById: builder.query<Post, number>({
+      queryFn: async (id) => {
+        try {
+          const post = await mockApi.getPostById(id)
+
+          return {
+            data: post as Post,
+          }
+        } catch (error) {
+          return {
+            error: {
+              status: 'CUSTOM_ERROR',
+              error:
+                error instanceof Error
+                  ? error.message
+                  : 'Failed to fetch post',
+            },
+          }
+        }
+      },
+
+      providesTags: (result, error, id) => [
+        {
+          type: 'Post' as const,
+          id,
+        },
+      ],
+    }),
+
     addPost: builder.mutation<Post, Partial<Post>>({
       queryFn: async (post) => {
         return {
@@ -141,5 +170,6 @@ export const apiSlice = createApi({
 export const {
   useGetUsersQuery,
   useGetPostsQuery,
+  useGetPostByIdQuery,
   useAddPostMutation,
 } = apiSlice

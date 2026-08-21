@@ -3341,25 +3341,25 @@
   {
     "challengeId": "13-query-parameters",
     "challengeName": "Query with Parameters and Detail View",
-    "timestamp": "2026-08-18T19:36:36.626Z",
+    "timestamp": "2026-08-21T14:08:22.787Z",
     "scores": {
-      "functionalTests": 33.3,
+      "functionalTests": 100,
       "codeQuality": 100,
       "architecture": 100,
       "bestPractices": 100,
-      "e2eTests": 0,
+      "e2eTests": 100,
       "aiReview": 0
     },
-    "totalScore": 46.655,
-    "passed": false,
+    "totalScore": 85,
+    "passed": true,
     "errors": [],
     "warnings": [],
     "testResults": {
-      "score": 33.3,
-      "passed": false,
+      "score": 100,
+      "passed": true,
       "totalTests": 3,
-      "passedTests": 1,
-      "failedTests": 2,
+      "passedTests": 3,
+      "failedTests": 0,
       "details": [
         {
           "assertionResults": [
@@ -3369,16 +3369,10 @@
                 "Challenge 13: Query with Parameters and Detail View"
               ],
               "fullName": " Challenge 13: Query with Parameters and Detail View API slice has getPostById query endpoint",
-              "status": "failed",
+              "status": "passed",
               "title": "API slice has getPostById query endpoint",
-              "duration": 15,
-              "failureMessages": [
-                "expected false to be true // Object.is equality"
-              ],
-              "location": {
-                "line": 14,
-                "column": 33
-              }
+              "duration": 3,
+              "failureMessages": []
             },
             {
               "ancestorTitles": [
@@ -3386,16 +3380,10 @@
                 "Challenge 13: Query with Parameters and Detail View"
               ],
               "fullName": " Challenge 13: Query with Parameters and Detail View PostDetail uses useGetPostByIdQuery or generated query hook",
-              "status": "failed",
+              "status": "passed",
               "title": "PostDetail uses useGetPostByIdQuery or generated query hook",
-              "duration": 4,
-              "failureMessages": [
-                "expected '/** Stub: Complete Challenge 13 (Quer…' to match /useGetPostByIdQuery|useQuery/"
-              ],
-              "location": {
-                "line": 23,
-                "column": 21
-              }
+              "duration": 1,
+              "failureMessages": []
             },
             {
               "ancestorTitles": [
@@ -3409,14 +3397,13 @@
               "failureMessages": []
             }
           ],
-          "startTime": 1787081802372,
-          "endTime": 1787081802392,
-          "status": "failed",
+          "startTime": 1787321307774,
+          "endTime": 1787321307779,
+          "status": "passed",
           "message": "",
           "name": "C:/Users/anujk/OneDrive/Desktop/Challenges/challenge-engine-react/courses/02-redux-rtk-query/project/tests/challenge-13.test.tsx"
         }
-      ],
-      "error": "Command failed: npx vitest run \"C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\challenge-13.test.tsx\" --reporter=json"
+      ]
     },
     "lintResults": {
       "score": 100,
@@ -3425,6 +3412,26 @@
       "errors": 0,
       "warnings": 0,
       "details": [
+        {
+          "filePath": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\src\\api\\apiSlice.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
         {
           "filePath": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\src\\components\\PostDetail.tsx",
           "messages": [],
@@ -3455,7 +3462,6 @@
       "details": [
         {
           "file": "src/api/apiSlice.ts",
-          "error": "File does not exist",
           "patternsFound": [],
           "patternsMissing": []
         },
@@ -3474,11 +3480,11 @@
       "note": "No best practices requirements specified in challenge"
     },
     "e2eResults": {
-      "score": 0,
-      "passed": false,
+      "score": 100,
+      "passed": true,
       "totalTests": 2,
-      "passedTests": 0,
-      "failedTests": 2,
+      "passedTests": 2,
+      "failedTests": 0,
       "details": [
         {
           "title": "challenge-13.spec.ts",
@@ -3495,7 +3501,7 @@
               "specs": [
                 {
                   "title": "should load challenge 13 page with content",
-                  "ok": false,
+                  "ok": true,
                   "tags": [],
                   "tests": [
                     {
@@ -3508,154 +3514,18 @@
                         {
                           "workerIndex": 0,
                           "parallelIndex": 0,
-                          "status": "failed",
-                          "duration": 2061,
-                          "error": {
-                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=Challenge 13')\nExpected: visible\nError: strict mode violation: locator('text=Challenge 13') resolved to 2 elements:\n    1) <h2>Challenge 13: Query with Parameters</h2> aka getByRole('heading', { name: 'Challenge 13: Query with' })\n    2) <div id=\"post-detail\">Complete Challenge 13 per README.</div> aka getByText('Complete Challenge 13 per')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Challenge 13')\u001b[22m\n",
-                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=Challenge 13')\nExpected: visible\nError: strict mode violation: locator('text=Challenge 13') resolved to 2 elements:\n    1) <h2>Challenge 13: Query with Parameters</h2> aka getByRole('heading', { name: 'Challenge 13: Query with' })\n    2) <div id=\"post-detail\">Complete Challenge 13 per README.</div> aka getByText('Complete Challenge 13 per')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Challenge 13')\u001b[22m\n\n    at C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts:10:53",
-                            "location": {
-                              "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                              "column": 53,
-                              "line": 10
-                            },
-                            "snippet": "\u001b[0m \u001b[90m  8 |\u001b[39m   test(\u001b[32m'should load challenge 13 page with content'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#challenge-13'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Challenge 13'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\n \u001b[90m    |\u001b[39m                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m   })\n \u001b[90m 12 |\u001b[39m\n \u001b[90m 13 |\u001b[39m   test(\u001b[32m'should show post detail area'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
-                          },
-                          "errors": [
-                            {
-                              "location": {
-                                "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                                "column": 53,
-                                "line": 10
-                              },
-                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=Challenge 13')\nExpected: visible\nError: strict mode violation: locator('text=Challenge 13') resolved to 2 elements:\n    1) <h2>Challenge 13: Query with Parameters</h2> aka getByRole('heading', { name: 'Challenge 13: Query with' })\n    2) <div id=\"post-detail\">Complete Challenge 13 per README.</div> aka getByText('Complete Challenge 13 per')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Challenge 13')\u001b[22m\n\n\n   8 |   test('should load challenge 13 page with content', async ({ page }) => {\n   9 |     await expect(page.locator('#challenge-13')).toBeVisible({ timeout: 10000 })\n> 10 |     await expect(page.locator('text=Challenge 13')).toBeVisible()\n     |                                                     ^\n  11 |   })\n  12 |\n  13 |   test('should show post detail area', async ({ page }) => {\n    at C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts:10:53"
-                            }
-                          ],
+                          "status": "passed",
+                          "duration": 1985,
+                          "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-08-18T19:36:57.124Z",
+                          "startTime": "2026-08-21T14:08:40.844Z",
                           "annotations": [],
-                          "attachments": [
-                            {
-                              "name": "screenshot",
-                              "contentType": "image/png",
-                              "path": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\test-results\\challenge-13-Challenge-13--880ca-llenge-13-page-with-content-chromium\\test-failed-1.png"
-                            },
-                            {
-                              "name": "error-context",
-                              "contentType": "text/markdown",
-                              "path": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\test-results\\challenge-13-Challenge-13--880ca-llenge-13-page-with-content-chromium\\error-context.md"
-                            }
-                          ],
-                          "errorLocation": {
-                            "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                            "column": 53,
-                            "line": 10
-                          }
-                        },
-                        {
-                          "workerIndex": 1,
-                          "parallelIndex": 0,
-                          "status": "failed",
-                          "duration": 736,
-                          "error": {
-                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=Challenge 13')\nExpected: visible\nError: strict mode violation: locator('text=Challenge 13') resolved to 2 elements:\n    1) <h2>Challenge 13: Query with Parameters</h2> aka getByRole('heading', { name: 'Challenge 13: Query with' })\n    2) <div id=\"post-detail\">Complete Challenge 13 per README.</div> aka getByText('Complete Challenge 13 per')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Challenge 13')\u001b[22m\n",
-                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=Challenge 13')\nExpected: visible\nError: strict mode violation: locator('text=Challenge 13') resolved to 2 elements:\n    1) <h2>Challenge 13: Query with Parameters</h2> aka getByRole('heading', { name: 'Challenge 13: Query with' })\n    2) <div id=\"post-detail\">Complete Challenge 13 per README.</div> aka getByText('Complete Challenge 13 per')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Challenge 13')\u001b[22m\n\n    at C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts:10:53",
-                            "location": {
-                              "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                              "column": 53,
-                              "line": 10
-                            },
-                            "snippet": "\u001b[0m \u001b[90m  8 |\u001b[39m   test(\u001b[32m'should load challenge 13 page with content'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#challenge-13'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Challenge 13'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\n \u001b[90m    |\u001b[39m                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m   })\n \u001b[90m 12 |\u001b[39m\n \u001b[90m 13 |\u001b[39m   test(\u001b[32m'should show post detail area'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
-                          },
-                          "errors": [
-                            {
-                              "location": {
-                                "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                                "column": 53,
-                                "line": 10
-                              },
-                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=Challenge 13')\nExpected: visible\nError: strict mode violation: locator('text=Challenge 13') resolved to 2 elements:\n    1) <h2>Challenge 13: Query with Parameters</h2> aka getByRole('heading', { name: 'Challenge 13: Query with' })\n    2) <div id=\"post-detail\">Complete Challenge 13 per README.</div> aka getByText('Complete Challenge 13 per')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Challenge 13')\u001b[22m\n\n\n   8 |   test('should load challenge 13 page with content', async ({ page }) => {\n   9 |     await expect(page.locator('#challenge-13')).toBeVisible({ timeout: 10000 })\n> 10 |     await expect(page.locator('text=Challenge 13')).toBeVisible()\n     |                                                     ^\n  11 |   })\n  12 |\n  13 |   test('should show post detail area', async ({ page }) => {\n    at C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts:10:53"
-                            }
-                          ],
-                          "stdout": [],
-                          "stderr": [],
-                          "retry": 1,
-                          "startTime": "2026-08-18T19:37:02.277Z",
-                          "annotations": [],
-                          "attachments": [
-                            {
-                              "name": "screenshot",
-                              "contentType": "image/png",
-                              "path": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\test-results\\challenge-13-Challenge-13--880ca-llenge-13-page-with-content-chromium-retry1\\test-failed-1.png"
-                            },
-                            {
-                              "name": "error-context",
-                              "contentType": "text/markdown",
-                              "path": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\test-results\\challenge-13-Challenge-13--880ca-llenge-13-page-with-content-chromium-retry1\\error-context.md"
-                            },
-                            {
-                              "name": "trace",
-                              "contentType": "application/zip",
-                              "path": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\test-results\\challenge-13-Challenge-13--880ca-llenge-13-page-with-content-chromium-retry1\\trace.zip"
-                            }
-                          ],
-                          "errorLocation": {
-                            "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                            "column": 53,
-                            "line": 10
-                          }
-                        },
-                        {
-                          "workerIndex": 2,
-                          "parallelIndex": 0,
-                          "status": "failed",
-                          "duration": 1105,
-                          "error": {
-                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=Challenge 13')\nExpected: visible\nError: strict mode violation: locator('text=Challenge 13') resolved to 2 elements:\n    1) <h2>Challenge 13: Query with Parameters</h2> aka getByRole('heading', { name: 'Challenge 13: Query with' })\n    2) <div id=\"post-detail\">Complete Challenge 13 per README.</div> aka getByText('Complete Challenge 13 per')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Challenge 13')\u001b[22m\n",
-                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=Challenge 13')\nExpected: visible\nError: strict mode violation: locator('text=Challenge 13') resolved to 2 elements:\n    1) <h2>Challenge 13: Query with Parameters</h2> aka getByRole('heading', { name: 'Challenge 13: Query with' })\n    2) <div id=\"post-detail\">Complete Challenge 13 per README.</div> aka getByText('Complete Challenge 13 per')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Challenge 13')\u001b[22m\n\n    at C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts:10:53",
-                            "location": {
-                              "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                              "column": 53,
-                              "line": 10
-                            },
-                            "snippet": "\u001b[0m \u001b[90m  8 |\u001b[39m   test(\u001b[32m'should load challenge 13 page with content'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#challenge-13'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Challenge 13'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\n \u001b[90m    |\u001b[39m                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m   })\n \u001b[90m 12 |\u001b[39m\n \u001b[90m 13 |\u001b[39m   test(\u001b[32m'should show post detail area'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
-                          },
-                          "errors": [
-                            {
-                              "location": {
-                                "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                                "column": 53,
-                                "line": 10
-                              },
-                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=Challenge 13')\nExpected: visible\nError: strict mode violation: locator('text=Challenge 13') resolved to 2 elements:\n    1) <h2>Challenge 13: Query with Parameters</h2> aka getByRole('heading', { name: 'Challenge 13: Query with' })\n    2) <div id=\"post-detail\">Complete Challenge 13 per README.</div> aka getByText('Complete Challenge 13 per')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Challenge 13')\u001b[22m\n\n\n   8 |   test('should load challenge 13 page with content', async ({ page }) => {\n   9 |     await expect(page.locator('#challenge-13')).toBeVisible({ timeout: 10000 })\n> 10 |     await expect(page.locator('text=Challenge 13')).toBeVisible()\n     |                                                     ^\n  11 |   })\n  12 |\n  13 |   test('should show post detail area', async ({ page }) => {\n    at C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts:10:53"
-                            }
-                          ],
-                          "stdout": [],
-                          "stderr": [],
-                          "retry": 2,
-                          "startTime": "2026-08-18T19:37:06.917Z",
-                          "annotations": [],
-                          "attachments": [
-                            {
-                              "name": "screenshot",
-                              "contentType": "image/png",
-                              "path": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\test-results\\challenge-13-Challenge-13--880ca-llenge-13-page-with-content-chromium-retry2\\test-failed-1.png"
-                            },
-                            {
-                              "name": "error-context",
-                              "contentType": "text/markdown",
-                              "path": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\test-results\\challenge-13-Challenge-13--880ca-llenge-13-page-with-content-chromium-retry2\\error-context.md"
-                            }
-                          ],
-                          "errorLocation": {
-                            "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                            "column": 53,
-                            "line": 10
-                          }
+                          "attachments": []
                         }
                       ],
-                      "status": "unexpected"
+                      "status": "expected"
                     }
                   ],
                   "id": "b108b4dbebb7686e0d0c-62f94784cfb44da7d5be",
@@ -3665,7 +3535,7 @@
                 },
                 {
                   "title": "should show post detail area",
-                  "ok": false,
+                  "ok": true,
                   "tags": [],
                   "tests": [
                     {
@@ -3676,156 +3546,20 @@
                       "projectName": "chromium",
                       "results": [
                         {
-                          "workerIndex": 3,
+                          "workerIndex": 0,
                           "parallelIndex": 0,
-                          "status": "failed",
-                          "duration": 10423,
-                          "error": {
-                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('post-detail')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('post-detail')\u001b[22m\n",
-                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('post-detail')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('post-detail')\u001b[22m\n\n    at C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts:14:51",
-                            "location": {
-                              "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                              "column": 51,
-                              "line": 14
-                            },
-                            "snippet": "\u001b[0m \u001b[90m 12 |\u001b[39m\n \u001b[90m 13 |\u001b[39m   test(\u001b[32m'should show post detail area'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 14 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'post-detail'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 15 |\u001b[39m   })\n \u001b[90m 16 |\u001b[39m })\n \u001b[90m 17 |\u001b[39m\u001b[0m"
-                          },
-                          "errors": [
-                            {
-                              "location": {
-                                "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                                "column": 51,
-                                "line": 14
-                              },
-                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('post-detail')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('post-detail')\u001b[22m\n\n\n  12 |\n  13 |   test('should show post detail area', async ({ page }) => {\n> 14 |     await expect(page.getByTestId('post-detail')).toBeVisible({ timeout: 10000 })\n     |                                                   ^\n  15 |   })\n  16 | })\n  17 |\n    at C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts:14:51"
-                            }
-                          ],
+                          "status": "passed",
+                          "duration": 391,
+                          "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-08-18T19:37:11.750Z",
+                          "startTime": "2026-08-21T14:08:43.025Z",
                           "annotations": [],
-                          "attachments": [
-                            {
-                              "name": "screenshot",
-                              "contentType": "image/png",
-                              "path": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\test-results\\challenge-13-Challenge-13--8c06f-hould-show-post-detail-area-chromium\\test-failed-1.png"
-                            },
-                            {
-                              "name": "error-context",
-                              "contentType": "text/markdown",
-                              "path": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\test-results\\challenge-13-Challenge-13--8c06f-hould-show-post-detail-area-chromium\\error-context.md"
-                            }
-                          ],
-                          "errorLocation": {
-                            "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                            "column": 51,
-                            "line": 14
-                          }
-                        },
-                        {
-                          "workerIndex": 4,
-                          "parallelIndex": 0,
-                          "status": "failed",
-                          "duration": 10648,
-                          "error": {
-                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('post-detail')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('post-detail')\u001b[22m\n",
-                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('post-detail')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('post-detail')\u001b[22m\n\n    at C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts:14:51",
-                            "location": {
-                              "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                              "column": 51,
-                              "line": 14
-                            },
-                            "snippet": "\u001b[0m \u001b[90m 12 |\u001b[39m\n \u001b[90m 13 |\u001b[39m   test(\u001b[32m'should show post detail area'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 14 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'post-detail'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 15 |\u001b[39m   })\n \u001b[90m 16 |\u001b[39m })\n \u001b[90m 17 |\u001b[39m\u001b[0m"
-                          },
-                          "errors": [
-                            {
-                              "location": {
-                                "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                                "column": 51,
-                                "line": 14
-                              },
-                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('post-detail')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('post-detail')\u001b[22m\n\n\n  12 |\n  13 |   test('should show post detail area', async ({ page }) => {\n> 14 |     await expect(page.getByTestId('post-detail')).toBeVisible({ timeout: 10000 })\n     |                                                   ^\n  15 |   })\n  16 | })\n  17 |\n    at C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts:14:51"
-                            }
-                          ],
-                          "stdout": [],
-                          "stderr": [],
-                          "retry": 1,
-                          "startTime": "2026-08-18T19:37:27.057Z",
-                          "annotations": [],
-                          "attachments": [
-                            {
-                              "name": "screenshot",
-                              "contentType": "image/png",
-                              "path": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\test-results\\challenge-13-Challenge-13--8c06f-hould-show-post-detail-area-chromium-retry1\\test-failed-1.png"
-                            },
-                            {
-                              "name": "error-context",
-                              "contentType": "text/markdown",
-                              "path": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\test-results\\challenge-13-Challenge-13--8c06f-hould-show-post-detail-area-chromium-retry1\\error-context.md"
-                            },
-                            {
-                              "name": "trace",
-                              "contentType": "application/zip",
-                              "path": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\test-results\\challenge-13-Challenge-13--8c06f-hould-show-post-detail-area-chromium-retry1\\trace.zip"
-                            }
-                          ],
-                          "errorLocation": {
-                            "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                            "column": 51,
-                            "line": 14
-                          }
-                        },
-                        {
-                          "workerIndex": 5,
-                          "parallelIndex": 0,
-                          "status": "failed",
-                          "duration": 10418,
-                          "error": {
-                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('post-detail')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('post-detail')\u001b[22m\n",
-                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('post-detail')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('post-detail')\u001b[22m\n\n    at C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts:14:51",
-                            "location": {
-                              "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                              "column": 51,
-                              "line": 14
-                            },
-                            "snippet": "\u001b[0m \u001b[90m 12 |\u001b[39m\n \u001b[90m 13 |\u001b[39m   test(\u001b[32m'should show post detail area'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 14 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'post-detail'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 15 |\u001b[39m   })\n \u001b[90m 16 |\u001b[39m })\n \u001b[90m 17 |\u001b[39m\u001b[0m"
-                          },
-                          "errors": [
-                            {
-                              "location": {
-                                "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                                "column": 51,
-                                "line": 14
-                              },
-                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('post-detail')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('post-detail')\u001b[22m\n\n\n  12 |\n  13 |   test('should show post detail area', async ({ page }) => {\n> 14 |     await expect(page.getByTestId('post-detail')).toBeVisible({ timeout: 10000 })\n     |                                                   ^\n  15 |   })\n  16 | })\n  17 |\n    at C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts:14:51"
-                            }
-                          ],
-                          "stdout": [],
-                          "stderr": [],
-                          "retry": 2,
-                          "startTime": "2026-08-18T19:37:41.603Z",
-                          "annotations": [],
-                          "attachments": [
-                            {
-                              "name": "screenshot",
-                              "contentType": "image/png",
-                              "path": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\test-results\\challenge-13-Challenge-13--8c06f-hould-show-post-detail-area-chromium-retry2\\test-failed-1.png"
-                            },
-                            {
-                              "name": "error-context",
-                              "contentType": "text/markdown",
-                              "path": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\test-results\\challenge-13-Challenge-13--8c06f-hould-show-post-detail-area-chromium-retry2\\error-context.md"
-                            }
-                          ],
-                          "errorLocation": {
-                            "file": "C:\\Users\\anujk\\OneDrive\\Desktop\\Challenges\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\tests\\e2e\\challenge-13.spec.ts",
-                            "column": 51,
-                            "line": 14
-                          }
+                          "attachments": []
                         }
                       ],
-                      "status": "unexpected"
+                      "status": "expected"
                     }
                   ],
                   "id": "b108b4dbebb7686e0d0c-8dc240493b76fcf57221",
@@ -3838,12 +3572,31 @@
           ]
         }
       ],
-      "error": "Command failed: npx playwright test \"tests/e2e/challenge-13.spec.ts\" --reporter=json"
+      "screenshots": []
     },
     "aiReviewResults": {
-      "error": "Functional tests must pass first (1/3 passed)",
+      "challengeId": "13-query-parameters",
+      "timestamp": "2026-08-21T14:08:43.971Z",
       "score": 0,
-      "skipped": true
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "requirementCompliance": 0
+    },
+    "aiResults": {
+      "challengeId": "13-query-parameters",
+      "timestamp": "2026-08-21T14:08:43.971Z",
+      "score": 0,
+      "feedback": [],
+      "strengths": [],
+      "improvements": [],
+      "readability": 0,
+      "maintainability": 0,
+      "overall": "",
+      "requirementCompliance": 0
     }
   }
 ]
