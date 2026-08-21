@@ -1,14 +1,5 @@
 [
   {
-    "challengeId": "06-rtk-query-setup",
-    "challengeName": "RTK Query Setup and API Slice",
-    "aiReview": {
-      "error": "Functional tests must pass first (1/3 passed)",
-      "score": 0,
-      "skipped": true
-    }
-  },
-  {
     "challengeId": "07-queries",
     "challengeName": "Query Endpoints and useQuery Hooks",
     "aiReview": {
@@ -197,6 +188,33 @@
       "readability": 85,
       "maintainability": 80,
       "overall": "The implementation satisfies all functional requirements: it correctly uses `createAsyncThunk` and `extraReducers`, integrates the reducer into the store, and follows TypeScript best practices. While RTK Query is not part of this challenge, the code demonstrates solid async‑handling patterns that would translate well to RTK Query if needed.",
+      "requirementCompliance": 90
+    }
+  },
+  {
+    "challengeId": "06-rtk-query-setup",
+    "challengeName": "RTK Query Setup and API Slice",
+    "aiReview": {
+      "challengeId": "06-rtk-query-setup",
+      "timestamp": "2026-08-21T13:23:35.805Z",
+      "score": 86,
+      "feedback": [],
+      "strengths": [
+        "Store correctly includes the RTK Query reducer and middleware, enabling future hooks to work.",
+        "The mock API is well‑structured and provides realistic async behavior for testing.",
+        "TypeScript types are consistently applied across the API slice and mock server."
+      ],
+      "improvements": [
+        "src/store/hooks.ts – Replace the non‑existent `useDispatch.withTypes<AppDispatch>()` with the standard typed hook: `const useAppDispatch = () => useDispatch<AppDispatch>()`.",
+        "src/api/apiSlice.ts – The `baseQuery` currently returns `{ data: null }` and is never used. Either replace it with `fetchBaseQuery({ baseUrl: '/' })` or implement a custom baseQuery that actually performs the request (e.g., delegating to `mockApi`). This will make the slice more realistic and future‑proof.",
+        "src/api/apiSlice.ts – Consider adding a `transformResponse` or `providesTags`/`invalidatesTags` configuration to enable caching and refetching logic, which is a core benefit of RTK Query.",
+        "src/api/apiSlice.ts – Add explicit return types to the `queryFn` (e.g., `async (): Promise<{ data: User[] }>`), improving type safety and readability.",
+        "src/api/apiSlice.ts – Document the purpose of the `getUsers` endpoint and any custom error handling logic for maintainers.",
+        "src/api/apiSlice.ts – If you plan to expose other endpoints (createUser, updateUser, etc.), add them now to keep the API slice cohesive."
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The implementation satisfies the core functional requirements: an API slice with a query endpoint and the store wired up with the reducer and middleware. The code is clean and well‑typed, but a few adjustments—particularly around the typed dispatch hook and the baseQuery implementation—will align it more closely with RTK Query best practices and improve maintainability.",
       "requirementCompliance": 90
     }
   }
